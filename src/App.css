@@ -1,0 +1,6709 @@
+/* Import Bootstrap CSS */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+  /* Natural Human Luxury Palette */
+  --bg-primary: #fbf5ef;        /* Warm alabaster boudoir sand matching reference */
+  --bg-surface: #ffffff;        /* Pure card surface */
+  --bg-warm-stage: #f5ece4;     /* Soft ivory flacon staging */
+  --bg-warm-subtle: #f8efe8;    /* Delicate sand container */
+  --bg-dark-editorial: #151413; /* Warm espresso charcoal (NOT pitch black) */
+
+  --text-main: #1c1917;         /* Deep espresso black */
+  --text-muted: #6e635b;        /* Warm stone gray */
+  --text-subtle: #9c9288;       /* Delicate caption taupe */
+  --text-light: #fdfbf7;        /* Pure warm white */
+
+  --accent-burgundy: #400813;   /* Deep luxury wine matching hero reference */
+  --kaira-burgundy: #400813;    /* Exact button wine */
+  --kaira-dark-wine: #30050e;   /* Darker hover wine */
+  --kaira-gold-accent: #9b784a; /* Champagne gold accent */
+  --accent-brass: #b89758;      /* Understated champagne brass */
+  --border-subtle: #ede5dc;     /* Whisper-thin divider */
+  --border-medium: #dfd6cb;     /* Soft outline */
+
+  /* Legacy aliases for safe fallback */
+  --primary-color: #400813;
+  --on-primary: #ffffff;
+  --background-color: #fbf5ef;
+  --card-bg: #ffffff;
+  --footer-bg: #f8efe8;
+  --on-surface: #1c1917;
+  --on-surface-variant: #6e635b;
+  --outline-variant: #ede5dc;
+
+  /* Editorial Typography Fonts */
+  --font-serif: "Libre Baskerville", Garamond, Georgia, serif;
+  --font-sans: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --velora-serif: "Libre Baskerville", Garamond, Georgia, serif;
+  --velora-sans: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--on-surface);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: clip;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global Section Anchor Scroll Offset (Prevents Sticky Navbar Overlap) */
+section[id],
+div[id] {
+  scroll-margin-top: 96px;
+}
+
+@media (max-width: 767.98px) {
+  section[id],
+  div[id] {
+    scroll-margin-top: 76px;
+  }
+}
+
+/* Typography styles matching PARFS */
+.font-serif-luxury {
+  font-family: var(--font-serif);
+}
+
+.brand-logo-text {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  letter-spacing: 0.1em;
+  color: var(--on-surface);
+  text-transform: uppercase;
+}
+
+/* Uppercase label helper (used throughout) */
+.label-caps {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Hover opacity utility */
+.hover-opacity {
+  transition: opacity 0.3s ease;
+}
+.hover-opacity:hover {
+  opacity: 0.65;
+}
+
+/* Hover text-primary utility */
+a.hover-text-primary:hover {
+  color: #84523d !important;
+}
+
+/* Category Filter Tabs styling */
+.filter-tabs-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.filter-tabs-wrapper::-webkit-scrollbar { display: none; }
+
+.filter-tab {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--on-surface-variant);
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0 0 8px 0;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.filter-tab:hover {
+  color: var(--on-surface);
+}
+
+.filter-tab.active {
+  color: var(--on-surface);
+  border-bottom: 2px solid var(--on-surface);
+}
+
+/* Premium Product Card Styles */
+.product-card-premium {
+  position: relative;
+  background: transparent;
+  margin-bottom: 2.5rem;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.product-image-wrapper {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background-color: var(--card-bg); /* Soft cream sand backdrop */
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.product-image-wrapper img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Elegant Quick View Button overlay on hover */
+.quick-view-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 28, 25, 0.15); /* Delicate dark veil */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  backdrop-filter: blur(2px);
+  transition: opacity 0.4s ease;
+  z-index: 5;
+}
+
+.quick-view-btn {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #1c1c19;
+  background: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+  pointer-events: none;
+}
+
+/* Hover States */
+.product-card-premium:hover {
+  transform: translateY(-6px);
+}
+
+.product-card-premium:hover .product-image-wrapper {
+  box-shadow: 0 10px 24px rgba(28, 28, 25, 0.08);
+}
+
+.product-card-premium:hover .product-image-wrapper img {
+  transform: scale(1.05);
+}
+
+.product-card-premium:hover .quick-view-overlay {
+  opacity: 1;
+}
+
+.product-card-premium:hover .quick-view-btn {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Premium Typography for Cards */
+.product-title-premium {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--on-surface);
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+.product-card-premium:hover .product-title-premium {
+  color: #84523d; /* Elegant rust tone transition */
+}
+
+.product-price-premium {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--on-surface-variant);
+  text-align: center;
+}
+
+/* Section Headings and Eyebrows */
+.section-header-editorial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4.5rem;
+  margin-bottom: 3.5rem;
+  text-align: center;
+}
+
+.section-number {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--on-surface-variant);
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+
+.section-title-editorial {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 3.5vw, 32px);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--on-surface);
+}
+
+.section-divider-line {
+  width: 40px;
+  height: 1px;
+  background-color: var(--on-surface-variant);
+  opacity: 0.25;
+  margin-top: 1rem;
+}
+
+/* Split Campaign Banner Layout */
+.campaign-split-container {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.campaign-image-wrapper {
+  height: 520px;
+  overflow: hidden;
+  position: relative;
+}
+
+.campaign-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.campaign-split-container:hover .campaign-image-wrapper img {
+  transform: scale(1.03);
+}
+
+.campaign-copy-wrapper {
+  height: 520px;
+  background-color: var(--footer-bg); /* Soft champagne backdrop */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 4rem;
+}
+
+@media (max-width: 991.98px) {
+  .campaign-image-wrapper, .campaign-copy-wrapper {
+    height: 400px;
+  }
+  .campaign-copy-wrapper {
+    padding: 2.5rem 2rem;
+  }
+}
+
+.campaign-narrative-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  margin-bottom: 1.5rem;
+}
+
+.campaign-narrative-title {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--on-surface);
+  margin-bottom: 1.5rem;
+}
+
+.campaign-narrative-body {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.8;
+  font-weight: 300;
+  color: var(--on-surface-variant);
+  margin-bottom: 2rem;
+  max-width: 380px;
+}
+
+.campaign-action-btn {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--on-surface);
+  text-decoration: none;
+  border-bottom: 1px solid var(--on-surface);
+  padding-bottom: 4px;
+  align-self: flex-start;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.campaign-action-btn:hover {
+  color: #84523d;
+  border-color: #84523d;
+}
+
+/* Header Styling */
+.header-search-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.25rem 0;
+  width: 150px;
+}
+
+.header-search-input {
+  background: transparent;
+  border: none;
+  font-size: 12px;
+  outline: none;
+  width: 100%;
+}
+
+/* Giant Footer Logo Text */
+.giant-footer-text {
+  font-family: var(--font-serif);
+  font-size: calc(6rem + 10vw);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--on-surface);
+  text-align: center;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Vertical text helper */
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  opacity: 0.7;
+}
+
+/* Loading indicator */
+.loading-indicator {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--on-surface);
+  text-transform: uppercase;
+}
+
+/* General Layout helpers */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* --- CART DRAWER OVERLAY & SIDEBAR --- */
+.cart-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(28, 28, 25, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1060;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.cart-drawer-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 440px;
+  background-color: var(--background-color);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+  z-index: 1070;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.cart-drawer.open {
+  transform: translateX(0);
+}
+
+.cart-drawer-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--outline-variant);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-drawer-body {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.cart-drawer-footer {
+  padding: 2rem;
+  border-top: 1px solid var(--outline-variant);
+  background-color: var(--footer-bg);
+}
+
+.cart-item-row {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(28, 28, 25, 0.05);
+}
+
+.cart-item-image {
+  width: 70px;
+  height: 70px;
+  background-color: var(--card-bg);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.cart-item-image img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--outline-variant);
+  border-radius: 2px;
+  background-color: #fff;
+  height: 28px;
+}
+.quantity-control button {
+  border: none;
+  background: transparent;
+  width: 28px;
+  height: 100%;
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+.quantity-control span {
+  width: 32px;
+  text-align: center;
+  font-size: 12px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+/* --- PRODUCT DETAIL VIEW --- */
+.detail-container {
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+}
+
+.breadcrumb-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  text-decoration: none;
+  margin-bottom: 2.5rem;
+  transition: color 0.3s ease;
+}
+.breadcrumb-back:hover {
+  color: #84523d;
+}
+
+.detail-gallery-main {
+  background-color: var(--card-bg);
+  border-radius: 6px;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.detail-gallery-main img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.detail-gallery-thumbs {
+  display: flex;
+  gap: 12px;
+}
+.detail-gallery-thumb {
+  width: 72px;
+  height: 72px;
+  background-color: var(--card-bg);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+.detail-gallery-thumb.active {
+  border-color: var(--on-surface);
+}
+.detail-gallery-thumb img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+/* Volume Selector */
+.size-selector-btn {
+  border: 1px solid var(--outline-variant);
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 8px 18px;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+.size-selector-btn.active {
+  border-color: var(--on-surface);
+  background-color: var(--on-surface);
+  color: var(--background-color);
+}
+
+/* Accordion sections */
+.detail-accordion {
+  border-top: 1px solid var(--outline-variant);
+  margin-top: 2rem;
+}
+.detail-accordion-item {
+  border-bottom: 1px solid var(--outline-variant);
+}
+.detail-accordion-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 0;
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-surface);
+  text-align: left;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: #84523d; /* Golden-rust accent */
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+}
+
+/* --- RESPONSIVE HEADER VISIBILITY STYLES --- */
+.kaira-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1050;
+  transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+  background: rgba(251, 249, 246, 0.98); /* Solid off-white sand for mobile visibility */
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(12px);
+}
+
+.kaira-header-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 14px 0;
+  transition: padding 0.4s ease;
+}
+
+.kaira-header-logo,
+.kaira-header-nav-link,
+.kaira-header-icon,
+.kaira-header-hamburger {
+  color: var(--on-surface) !important;
+  transition: color 0.4s ease, transform 0.3s ease, opacity 0.2s ease;
+}
+
+.kaira-header-nav-link {
+  opacity: 0.85;
+}
+.kaira-header-nav-link:hover {
+  opacity: 1;
+}
+
+/* Desktop styles: overlay hero banner on load */
+@media (min-width: 992px) {
+  .kaira-header {
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  
+  .kaira-header-grid {
+    padding: 22px 0;
+  }
+
+  .kaira-header-logo,
+  .kaira-header-nav-link,
+  .kaira-header-icon,
+  .kaira-header-hamburger {
+    color: #ffffff !important; /* White color for contrast against dark hero banner */
+  }
+
+  /* Scrolled solid state for desktop */
+  .kaira-header.scrolled {
+    background: rgba(251, 249, 246, 0.97);
+    box-shadow: 0 1px 16px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(12px);
+  }
+
+  .kaira-header.scrolled .kaira-header-grid {
+    padding: 14px 0;
+  }
+
+  .kaira-header.scrolled .kaira-header-logo,
+  .kaira-header.scrolled .kaira-header-nav-link,
+  .kaira-header.scrolled .kaira-header-icon,
+  .kaira-header.scrolled .kaira-header-hamburger {
+    color: var(--on-surface) !important;
+  }
+}
+
+/* --- PERFUME MANIA THEME LANDING PAGE OVERHAUL CLASSES --- */
+
+/* Luxury Star Ratings */
+.perfume-stars {
+  color: #e5a632; /* Golden amber stars */
+  display: flex;
+  gap: 3px;
+  font-size: 13px;
+}
+
+/* ── LUXURY PRODUCT CARDS ────────────────────────────────────────── */
+.luxury-product-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 4px 18px -4px rgba(28, 25, 23, 0.05), 0 2px 6px -1px rgba(28, 25, 23, 0.02);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.luxury-product-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(179, 36, 36, 0.28);
+  box-shadow: 0 22px 42px -12px rgba(44, 30, 20, 0.14), 0 8px 18px -4px rgba(44, 30, 20, 0.05);
+}
+
+/* Media / Bottle Stage */
+.luxury-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 4.6;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f7f5f2 0%, #ebe5dc 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.luxury-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.luxury-product-card:hover .luxury-card-img {
+  transform: scale(1.08);
+}
+
+.luxury-card-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.10) 0%, transparent 28%, transparent 60%, rgba(0, 0, 0, 0.32) 100%);
+}
+
+/* Badges stack */
+.luxury-badge-stack {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  pointer-events: none;
+  max-width: calc(100% - 46px);
+}
+
+.luxury-pill-badge {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  line-height: 1.2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.luxury-badge-sale {
+  background: #b32424;
+  color: #ffffff;
+}
+
+.luxury-badge-bestseller {
+  background: #181716;
+  color: #f7e7ce;
+  border: 1px solid rgba(247, 231, 206, 0.3);
+}
+
+.luxury-badge-new {
+  background: rgba(255, 255, 255, 0.94);
+  color: #1a1918;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Wishlist Button */
+.luxury-wishlist-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 4;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  color: #555555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.luxury-wishlist-btn span {
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.luxury-wishlist-btn:hover {
+  transform: scale(1.12);
+  background: #ffffff;
+  color: #b32424;
+  box-shadow: 0 6px 16px rgba(179, 36, 36, 0.22);
+}
+
+.luxury-wishlist-btn:active {
+  transform: scale(0.92);
+}
+
+.luxury-wishlist-btn.active {
+  background: #ffffff;
+  color: #b32424;
+}
+
+/* Quick View floating action on image */
+.luxury-hover-actions {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-hover-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #1a1918;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.luxury-hover-action-btn span.material-symbols-outlined {
+  font-size: 17px;
+}
+
+.luxury-hover-action-btn:hover {
+  background: #1a1918;
+  color: #ffffff;
+  border-color: #1a1918;
+  transform: translateY(-1px);
+}
+
+.luxury-product-card:hover .luxury-hover-actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card Content / Typography */
+.luxury-card-content {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: left;
+  background: #ffffff;
+}
+
+.luxury-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 3px;
+}
+
+.luxury-meta-brand {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kaira-burgundy, #4a0e1c);
+}
+
+.luxury-meta-category {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8c827a;
+}
+
+.luxury-card-title {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #171615;
+  margin: 0 0 5px 0;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.luxury-product-card:hover .luxury-card-title {
+  color: var(--primary-color);
+}
+
+/* Pricing Row */
+.luxury-card-pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.luxury-price-current {
+  font-family: var(--font-serif);
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #181716;
+  line-height: 1;
+}
+
+.luxury-price-original {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  color: #9c958c;
+  text-decoration: line-through;
+  line-height: 1;
+}
+
+/* Direct Sleek Size Pills Row */
+.luxury-size-pills-row {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.luxury-size-pill {
+  flex: 1;
+  background: #faf8f5;
+  border: 1px solid #ded6c9;
+  color: #6e6862;
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 5px 6px;
+  border-radius: 2px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.luxury-size-pill:hover {
+  border-color: #181716;
+  color: #181716;
+}
+
+.luxury-size-pill.active {
+  background: #181716;
+  border-color: #181716;
+  color: #ffffff;
+}
+
+/* User-Friendly Add to Bag Button */
+.luxury-add-cart-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 2px;
+  border: 1px solid #181716;
+  background: #181716;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  margin-top: auto;
+}
+
+.luxury-add-cart-btn:hover {
+  background-color: var(--kaira-burgundy, #4a0e1c);
+  border-color: var(--kaira-burgundy, #4a0e1c);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(74, 14, 28, 0.25);
+}
+
+.luxury-add-cart-btn span.material-symbols-outlined {
+  font-size: 16px;
+}
+
+.luxury-add-cart-btn:active {
+  transform: translateY(1px);
+}
+
+.luxury-add-cart-btn.added {
+  background: #15803d;
+  border-color: #15803d;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(21, 128, 61, 0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+  .luxury-card-media {
+    aspect-ratio: 1 / 1.1;
+  }
+  .luxury-hover-actions {
+    display: none; /* Mobile users use bottom CTA & direct tap */
+  }
+  .luxury-card-content {
+    padding: 14px 14px 16px;
+  }
+  .luxury-card-title {
+    font-size: 15px;
+  }
+  .luxury-add-cart-btn {
+    padding: 9px 12px;
+    font-size: 11px;
+  }
+}
+
+/* Category Tabs navigation styling */
+.perfume-tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--outline-variant);
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+}
+.perfume-tab-trigger {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  border: none;
+  background: transparent;
+  padding: 8px 4px;
+  position: relative;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+.perfume-tab-trigger:hover,
+.perfume-tab-trigger.active {
+  color: var(--primary-color);
+}
+.perfume-tab-trigger.active::after {
+  content: "";
+  position: absolute;
+  bottom: -11px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary-color);
+}
+
+/* Video Showcase area */
+.video-showcase-section {
+  background-color: #0c0c0c;
+  padding: 100px 0;
+  color: #fff;
+}
+.video-showcase-player-box {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  aspect-ratio: 16/9;
+}
+.video-showcase-player-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.video-overlay-play-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.4s ease;
+}
+.video-overlay-play-cover:hover {
+  background: rgba(0,0,0,0.25);
+}
+.video-play-btn-ring {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+.video-overlay-play-cover:hover .video-play-btn-ring {
+  transform: scale(1.08);
+}
+.video-play-btn-ring span {
+  font-size: 32px;
+  color: var(--primary-color);
+  margin-left: 4px;
+}
+
+/* Section Title Editorial for Perfume Mania theme */
+.perfume-section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.perfume-section-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: 8px;
+}
+.perfume-section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 4vw, 36px);
+  color: var(--on-surface);
+  font-weight: 400;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+}
+.perfume-section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: var(--primary-color);
+}
+
+/* Highlights Banner Panel style */
+.highlights-banner {
+  background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url("https://wpthemes.themehunk.com/perfume-mania/wp-content/uploads/sites/298/2024/04/img2.png") center center no-repeat;
+  background-size: cover;
+  padding: 110px 0;
+  color: #fff;
+  text-align: center;
+  background-attachment: scroll;
+}
+@media (min-width: 992px) {
+  .highlights-banner {
+    background-attachment: fixed;
+  }
+}
+
+.highlight-col {
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+.highlight-col:hover {
+  transform: translateY(-5px);
+}
+.highlight-num {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+.highlight-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+.highlight-desc {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  opacity: 0.8;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* Customer Reviews / Testimonials */
+.testimonial-card-premium {
+  background: var(--card-bg);
+  border: 1px solid var(--outline-variant);
+  border-radius: 4px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  height: 100%;
+}
+.testimonial-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 15px auto;
+  border: 2px solid var(--primary-color);
+}
+.testimonial-quote {
+  font-family: var(--font-sans);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--on-surface-variant);
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+.testimonial-user {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.testimonial-role {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Social Grid Gallery Slider */
+.social-gallery-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: all 0.4s ease;
+  border: 1px solid var(--outline-variant);
+}
+.social-gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.social-gallery-item:hover .social-gallery-img {
+  transform: scale(1.04);
+}
+.social-gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(179,36,36,0.7); /* Burgundy overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 4px;
+}
+.social-gallery-item:hover .social-gallery-overlay {
+  opacity: 1;
+}
+.social-gallery-overlay span {
+  color: #fff;
+  font-size: 30px;
+}
+
+/* Wishlist Badge and panel headers */
+.wishlist-panel-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* --- ASYMMETRIC GRID FEATURED BANNER SECTION --- */
+.asymmetric-grid-container {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .asymmetric-grid-container {
+    flex-direction: row;
+  }
+}
+
+.asymmetric-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+
+.asymmetric-right-col {
+  flex: 1;
+  display: flex;
+}
+
+.asymmetric-card {
+  position: relative;
+  border-radius: 12px; /* Smooth rounded corners matching the screenshot */
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  width: 100%;
+}
+.asymmetric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.asymmetric-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.asymmetric-card:hover img {
+  transform: scale(1.03);
+}
+
+.asymmetric-card-tall {
+  height: 100%;
+  min-height: 380px;
+}
+@media (min-width: 768px) {
+  .asymmetric-card-tall {
+    min-height: 600px;
+  }
+}
+
+.asymmetric-card-short {
+  height: 100%;
+  min-height: 240px;
+}
+@media (min-width: 768px) {
+  .asymmetric-card-short {
+    height: 288px;
+  }
+}
+
+.asymmetric-overlay-content {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+  color: #ffffff;
+}
+
+.asymmetric-overlay-line {
+  width: 60px;
+  height: 2px;
+  background-color: #ffffff;
+  margin-bottom: 12px;
+  transition: width 0.3s ease;
+}
+.asymmetric-card:hover .asymmetric-overlay-line {
+  width: 90px;
+}
+
+.asymmetric-overlay-text {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 380px;
+  margin: 0;
+  opacity: 0.95;
+  letter-spacing: 0.02em;
+}
+
+.perfume-pill-badge-wrap {
+  text-align: center;
+  margin-bottom: 8px;
+}
+.perfume-pill-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--on-surface-variant);
+  border: 1px solid rgba(28,28,25,0.2);
+  border-radius: 100px;
+  padding: 6px 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ========================================================
+   HAUTE PERFUMERIE REDESIGN - LUXURY ELEVATIONS
+   ======================================================== */
+
+/* Oil Badges */
+.luxury-badge-oil {
+  background: linear-gradient(135deg, #1b1918 0%, #3a322b 100%);
+  color: #e7c67c !important;
+  border: 1px solid rgba(231, 198, 124, 0.4);
+  letter-spacing: 0.12em;
+}
+
+.luxury-meta-brand {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #84523d;
+}
+
+/* Size selection on cards */
+.luxury-card-size-picker {
+  margin: 10px 0 8px;
+  padding: 6px 8px;
+  background-color: #f7f5f2;
+  border-radius: 6px;
+  border: 1px solid #ebe5dc;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.luxury-size-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7a756f;
+}
+
+.luxury-size-guide-tag {
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 700;
+  color: var(--kaira-burgundy, #4a0e1c);
+}
+
+.luxury-size-options {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.luxury-size-chip {
+  flex: 1;
+  padding: 5px 6px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 3px;
+  border: 1px solid #dcd4c8;
+  background-color: #ffffff;
+  color: #2b2725;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.luxury-size-chip:hover {
+  border-color: #84523d;
+}
+
+.luxury-size-chip.active {
+  background-color: #1c1a19;
+  border-color: #1c1a19;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.luxury-rating-inline {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Arabian Campaign Showcase */
+.arabian-campaign-showcase {
+  background-color: #0e0d0d;
+  color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.campaign-visual-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 440px;
+}
+
+.campaign-ritual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.campaign-arabic-badge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: rgba(14, 13, 13, 0.75);
+  backdrop-filter: blur(8px);
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(231, 198, 124, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.arabic-phrase {
+  font-family: 'Amiri', serif, var(--font-serif);
+  font-size: 24px;
+  color: #e7c67c;
+  line-height: 1.2;
+}
+
+.arabic-sub {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.8);
+  text-transform: uppercase;
+}
+
+.campaign-perks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.campaign-perk-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+}
+
+.perk-icon {
+  font-size: 20px;
+  color: #e7c67c;
+}
+
+/* Trust Badges Bar */
+.trust-badge-card {
+  padding: 16px 8px;
+  transition: transform 0.25s ease;
+}
+
+.trust-badge-card:hover {
+  transform: translateY(-3px);
+}
+
+.trust-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #f7f4ee;
+  border: 1px solid #e7ded0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #84523d;
+}
+
+.trust-badge-title {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1817;
+}
+
+.trust-badge-desc {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 1.5;
+  color: #7a756f;
+}
+
+/* Notes Explorer Box (Nature Remembers) */
+.notes-tab-btn {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid #d5cbbf;
+  background-color: #ffffff;
+  color: #3b3531;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.notes-tab-btn:hover {
+  border-color: #84523d;
+  color: #84523d;
+}
+
+.notes-tab-btn.active {
+  background-color: #1f1c1a;
+  color: #e7c67c;
+  border-color: #1f1c1a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.notes-explorer-box {
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5dfd5;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.notes-flacon-wrapper {
+  max-width: 320px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+  border: 1px solid #ebe5dc;
+}
+
+.notes-flacon-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.notes-flacon-wrapper:hover .notes-flacon-img {
+  transform: scale(1.05);
+}
+
+.notes-badge-overlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(28,26,25,0.85);
+  backdrop-filter: blur(6px);
+  color: #e7c67c;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.badge-size-pill {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: #f5f2ec;
+  color: #3d3833;
+  border: 1px solid #ddd5c8;
+}
+
+.badge-size-pill.highlight {
+  background-color: #1f1c1a;
+  color: #e7c67c;
+  border-color: #1f1c1a;
+}
+
+.btn-link-luxury {
+  background: none;
+  border: none;
+  color: #84523d;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 4px 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.stage-line-indicator {
+  width: 3px;
+  height: 24px;
+  background-color: #84523d;
+  border-radius: 2px;
+}
+
+.stage-line-indicator.heart-indicator {
+  background-color: #c59a3f;
+}
+
+.stage-line-indicator.base-indicator {
+  background-color: #2b2520;
+}
+
+.stage-name {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f1c1a;
+}
+
+.stage-subtitle {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: #7a756f;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.note-bubbles-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  padding-left: 14px;
+}
+
+.note-bubble {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #e2dbcf;
+  background-color: #fbf9f6;
+  color: #3b3531;
+}
+
+.note-bubble.top-bubble {
+  border-color: #d1e2eb;
+  background-color: #f2f8fb;
+  color: #1b4965;
+}
+
+.note-bubble.heart-bubble {
+  border-color: #edd9d0;
+  background-color: #faf3f0;
+  color: #84523d;
+}
+
+.note-bubble.base-bubble {
+  border-color: #ded7ce;
+  background-color: #f5f2ee;
+  color: #26211c;
+}
+
+.btn-quick-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: #1f1c1a;
+  color: #ffffff;
+  border: 1px solid #1f1c1a;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-quick-add:hover {
+  background-color: #3a3430;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+.btn-quick-add.secondary {
+  background-color: #ffffff;
+  color: #1f1c1a;
+  border-color: #cfc6b8;
+}
+
+.btn-quick-add.secondary:hover {
+  background-color: #f7f5f2;
+}
+
+/* Detail Page Specific Elevations */
+.luxury-detail-stage {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  border: 1px solid #ebe5dc;
+  background-color: #ffffff;
+}
+
+.detail-hero-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.detail-image-badge-pill {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(28, 26, 25, 0.88);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(231, 198, 124, 0.4);
+}
+
+.detail-accords-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.accord-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #ebe5dc;
+  min-width: 0;
+}
+
+@media (max-width: 575.98px) {
+  .detail-accords-strip {
+    gap: 6px;
+  }
+  .accord-chip {
+    padding: 7px 5px;
+    gap: 5px;
+  }
+  .accord-chip .material-symbols-outlined {
+    font-size: 15px !important;
+  }
+  .accord-chip strong {
+    font-size: 9.5px !important;
+    line-height: 1.15;
+  }
+  .accord-chip small {
+    font-size: 7.5px !important;
+    letter-spacing: 0.03em;
+  }
+}
+
+.accord-chip .material-symbols-outlined {
+  color: #84523d;
+  font-size: 22px;
+}
+
+.accord-chip strong {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: #1a1817;
+}
+
+.accord-chip small {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  color: #7a756f;
+  text-transform: uppercase;
+}
+
+.detail-brand-tag {
+  color: #84523d;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+}
+
+.detail-category-badge {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: #f2ede5;
+  color: #4a443e;
+}
+
+.detail-pricing-box {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.detail-price-main {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 600;
+  color: #1a1817;
+}
+
+.detail-price-compare {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: #9c958d;
+  text-decoration: line-through;
+}
+
+.detail-savings-badge {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1e6b37;
+  background-color: #e8f5ec;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.detail-size-btn {
+  flex: 1;
+  padding: 14px 16px;
+  background-color: #ffffff;
+  border: 1.5px solid #dcd4c8;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.detail-size-btn:hover {
+  border-color: #84523d;
+}
+
+.detail-size-btn.active {
+  border-color: #1c1a19;
+  background-color: #faf8f5;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.size-btn-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.detail-read-more-btn {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: #84523d;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 2px;
+}
+
+.size-volume {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: #1c1a19;
+}
+
+.size-cost {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  color: #84523d;
+}
+
+.size-mrp {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: #9c958d;
+  text-decoration: line-through;
+}
+
+.size-badge-value {
+  position: absolute;
+  top: -10px;
+  right: 12px;
+  background-color: #1c1a19;
+  color: #e7c67c;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.detail-add-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  height: 48px;
+  transition: all 0.3s ease;
+}
+
+.detail-add-btn:hover {
+  background-color: #84523d;
+  color: #ffffff;
+}
+
+.detail-wishlist-toggle {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  border: 1px solid #dcd4c8;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.detail-wishlist-toggle:hover {
+  border-color: #b32424;
+}
+
+/* Olfactory Pyramid in Detail Page */
+.olfactory-pyramid-card {
+  background-color: #fcfbf9;
+  border-radius: 8px;
+  border: 1px solid #ebe5dc;
+  padding: 24px;
+}
+
+.pyramid-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ebe5dc;
+  padding-bottom: 12px;
+}
+
+.pyramid-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #1a1817;
+}
+
+.pyramid-tier {
+  margin-bottom: 18px;
+}
+
+.pyramid-tier-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.tier-badge {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #84523d;
+}
+
+.tier-timing {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: #8a847d;
+  font-style: italic;
+}
+
+.pyramid-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.note-pill {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background-color: #ffffff;
+  border: 1px solid #ded6c9;
+  color: #2b2725;
+}
+
+.top-pill {
+  background-color: #f2f8fb;
+  border-color: #cfe2ec;
+  color: #144563;
+}
+
+.heart-pill {
+  background-color: #faf3f0;
+  border-color: #eedcd4;
+  color: #84523d;
+}
+
+.base-pill {
+  background-color: #f5f2ee;
+  border-color: #ded7ce;
+  color: #1f1b17;
+}
+
+
+
+
+/* ========================================================
+   EXACT VELORA FRAGRANCE HOUSE DESIGN SYSTEM (IMAGE 1 & 2)
+   ======================================================== */
+
+:root {
+  --velora-dark-bg: #09090b;
+  --velora-surface-dark: #0e0d0c;
+  --velora-cream-bg: #f8f6f0;
+  --velora-card-stage: #f2ede4;
+  --velora-wine-bg: #1c111a;
+  --velora-gold: #c59a3f;
+  --velora-gold-light: #e7c67c;
+  --velora-serif: 'Playfair Display', 'Cormorant Garamond', 'Cinzel', Georgia, serif;
+  --velora-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* --- HEADER --- */
+.velora-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #09090b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 1000;
+  padding: 18px 0;
+  transition: all 0.3s ease;
+}
+
+.velora-header.scrolled {
+  padding: 12px 0;
+  background-color: rgba(9, 9, 11, 0.96);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.velora-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.velora-brand-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #ffffff !important;
+}
+
+.velora-logo-title {
+  font-family: var(--velora-serif);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  line-height: 1;
+}
+
+.velora-logo-sub {
+  font-family: var(--velora-sans);
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+}
+
+.velora-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.velora-nav-links a {
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.velora-nav-links a:hover {
+  color: #ffffff;
+}
+
+.velora-action-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.velora-icon-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.velora-icon-btn:hover {
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+.velora-bag-badge {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  background-color: var(--velora-gold);
+  color: #09090b;
+  font-size: 9px;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.velora-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.velora-search-input {
+  width: 0;
+  opacity: 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-family: var(--velora-sans);
+  font-size: 12px;
+  outline: none;
+  transition: width 0.35s ease, opacity 0.3s ease;
+  padding: 2px 4px;
+}
+
+.velora-search-input.open {
+  width: 140px;
+  opacity: 1;
+  margin-right: 6px;
+}
+
+.velora-search-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 12px;
+  width: 280px;
+  background-color: #1a1918;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 1001;
+}
+
+.velora-search-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  color: #ffffff;
+  transition: background-color 0.2s ease;
+}
+
+.velora-search-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.velora-search-item img {
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.velora-search-item strong {
+  display: block;
+  font-size: 12px;
+}
+
+.velora-search-item small {
+  color: var(--velora-gold);
+  font-size: 10px;
+}
+
+.velora-mobile-nav {
+  padding: 16px 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.velora-mobile-nav a {
+  font-family: var(--velora-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* --- HERO --- */
+.velora-hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  background-color: #09090b;
+  overflow: hidden;
+}
+
+.velora-hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  z-index: 1;
+}
+
+.velora-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(to right, rgba(9, 9, 11, 0.95) 0%, rgba(9, 9, 11, 0.75) 45%, rgba(9, 9, 11, 0.2) 75%, transparent 100%),
+    linear-gradient(to top, rgba(9, 9, 11, 0.8) 0%, transparent 40%);
+  z-index: 2;
+}
+
+.velora-hero-container {
+  position: relative;
+  z-index: 3;
+}
+
+.velora-hero-text-block {
+  max-width: 580px;
+  padding: 60px 0;
+}
+
+.velora-eyebrow {
+  display: block;
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 1.5rem;
+}
+
+.velora-hero-title {
+  font-family: var(--velora-serif);
+  font-size: clamp(44px, 6vw, 76px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.velora-hero-subtitle {
+  font-family: var(--velora-sans);
+  font-size: clamp(14px, 1.4vw, 17px);
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 2rem;
+  max-width: 440px;
+}
+
+.velora-hero-editions-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 18px;
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  font-family: var(--velora-sans);
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.velora-hero-editions-pill .divider {
+  opacity: 0.4;
+}
+
+.velora-hero-editions-pill .oil-tag {
+  color: var(--velora-gold);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.velora-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff;
+  color: #09090b;
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.velora-hero-cta:hover {
+  background-color: #f0ebe1;
+  color: #09090b;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+}
+
+.velora-hero-top-right {
+  position: absolute;
+  top: 40px;
+  right: 50px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: var(--velora-sans);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.velora-hero-bottom-right {
+  position: absolute;
+  bottom: 40px;
+  right: 50px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: var(--velora-sans);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+/* --- SCENT FAMILIES --- */
+.velora-scent-families-section {
+  background-color: var(--bg-warm-subtle);
+  padding: 70px 0;
+  color: #1a1817;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.velora-section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.velora-section-eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-brass);
+  margin-bottom: 6px;
+}
+
+.velora-section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(26px, 3.8vw, 42px);
+  font-weight: 400;
+  margin: 0;
+  color: #141312;
+}
+
+.velora-section-motto {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7a7369;
+}
+
+.velora-explore-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.velora-explore-link:hover {
+  opacity: 0.7;
+}
+
+/* Scent Families Rail */
+.kaira-family-rail-wrap {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.kaira-family-rail-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.kaira-family-rail {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  width: 100%;
+  align-items: stretch;
+}
+
+.kaira-family-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@media (max-width: 991.98px) {
+  .kaira-family-rail {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    min-width: 100%;
+    margin: 0;
+    padding: 4px 2px 10px;
+    scroll-snap-type: x mandatory;
+    align-items: stretch;
+  }
+  .kaira-family-item {
+    flex: 0 0 160px;
+    scroll-snap-align: start;
+    height: 100%;
+  }
+}
+
+.velora-family-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  background: #ffffff;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  padding: 10px 8px 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.velora-family-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(64, 8, 19, 0.08);
+}
+
+.velora-family-img-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  background-color: var(--bg-warm-stage);
+}
+
+.velora-family-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.velora-family-card:hover .velora-family-img-wrap img {
+  transform: scale(1.06);
+}
+
+.velora-family-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.velora-family-name {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #141312;
+  margin-bottom: 4px;
+}
+
+.velora-family-desc {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: #6a645b;
+  line-height: 1.4;
+  margin: 0;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* --- MODERN CLASSICS --- */
+/* ==========================================================================
+   KAIRA MODERN CLASSICS - ULTRA LUXURY PRODUCT GRID
+   ========================================================================== */
+/* ==========================================================================
+   HUMAN LUXURY PRODUCT SECTION (Modern Classics)
+   ========================================================================== */
+.kaira-human-classics-section {
+  background-color: #faf8f5;
+  padding: 90px 0 100px;
+}
+
+.kaira-editorial-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8c7653;
+  margin-bottom: 6px;
+}
+
+.kaira-editorial-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 3.2vw, 38px);
+  color: #181716;
+  font-weight: 400;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.kaira-editorial-subheading {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: #6e6862;
+  margin: 0;
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.kaira-editorial-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #181716;
+  text-decoration: none;
+  border-bottom: 1px solid #181716;
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease;
+}
+
+.kaira-editorial-link:hover {
+  opacity: 0.65;
+}
+
+/* 6-Product Balanced Grid */
+.kaira-human-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+  .kaira-human-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 16px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+  }
+  .kaira-human-card {
+    max-width: 275px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .kaira-human-stage {
+    aspect-ratio: unset !important;
+    height: 175px !important;
+    max-height: 175px !important;
+    padding: 8px 10px !important;
+  }
+  .flacon-holder {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .flacon-img {
+    max-height: 140px !important;
+    max-width: 82% !important;
+    object-fit: contain !important;
+  }
+  .kaira-human-body {
+    padding: 10px 12px 12px !important;
+  }
+  .brand-tag, .category-tag {
+    font-size: 8px !important;
+  }
+  .product-title {
+    font-size: 13.5px !important;
+    margin-bottom: 2px !important;
+    line-height: 1.3 !important;
+    font-weight: 600 !important;
+  }
+  .product-notes {
+    font-size: 10px !important;
+    margin-bottom: 6px !important;
+    line-height: 1.3 !important;
+  }
+  .kaira-card-pricing-row {
+    margin-bottom: 5px !important;
+  }
+  .kaira-card-pricing-row .final-price {
+    font-size: 14px !important;
+  }
+  .kaira-card-pricing-row .old-price {
+    font-size: 10.5px !important;
+  }
+  .kaira-card-sizes-row {
+    margin-bottom: 6px !important;
+    gap: 4px !important;
+  }
+  .kaira-size-pill {
+    padding: 3px 6px !important;
+    font-size: 8.5px !important;
+    height: 24px !important;
+  }
+  .add-bag-btn {
+    padding: 6px 10px !important;
+    font-size: 9px !important;
+    height: 32px !important;
+    letter-spacing: 0.1em !important;
+  }
+}
+
+@media (max-width: 991.98px) and (min-width: 768px) {
+  .kaira-human-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 14px !important;
+    max-width: 900px !important;
+    margin: 0 auto !important;
+  }
+  .kaira-human-card {
+    max-width: 275px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .kaira-human-stage {
+    aspect-ratio: unset !important;
+    height: 175px !important;
+    max-height: 175px !important;
+    padding: 8px 10px !important;
+  }
+  .flacon-holder {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .flacon-img {
+    max-height: 140px !important;
+    max-width: 82% !important;
+    object-fit: contain !important;
+  }
+  .kaira-human-body {
+    padding: 10px 12px 12px !important;
+  }
+  .brand-tag, .category-tag {
+    font-size: 8px !important;
+  }
+  .product-title {
+    font-size: 13.5px !important;
+    margin-bottom: 2px !important;
+    line-height: 1.3 !important;
+  }
+  .product-notes {
+    font-size: 10px !important;
+    margin-bottom: 6px !important;
+  }
+  .kaira-card-pricing-row {
+    margin-bottom: 5px !important;
+  }
+  .kaira-card-pricing-row .final-price {
+    font-size: 14px !important;
+  }
+  .kaira-card-pricing-row .old-price {
+    font-size: 10.5px !important;
+  }
+  .kaira-card-sizes-row {
+    margin-bottom: 6px !important;
+    gap: 4px !important;
+  }
+  .kaira-size-pill {
+    padding: 3px 6px !important;
+    font-size: 8.5px !important;
+    height: 24px !important;
+  }
+  .add-bag-btn {
+    padding: 6px 10px !important;
+    font-size: 9px !important;
+    height: 32px !important;
+  }
+}
+
+@media (max-width: 767.98px) and (min-width: 576px) {
+  .kaira-human-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .kaira-human-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .kaira-human-body {
+    padding: 10px 8px 12px;
+  }
+  .product-title {
+    font-size: 13px !important;
+    margin-bottom: 2px !important;
+  }
+  .product-notes {
+    font-size: 10px !important;
+    margin-bottom: 8px !important;
+  }
+  .kaira-card-pricing-row {
+    margin-bottom: 6px !important;
+    gap: 5px !important;
+  }
+  .kaira-card-pricing-row .final-price {
+    font-size: 14px !important;
+  }
+  .kaira-card-pricing-row .old-price {
+    font-size: 10px !important;
+  }
+  .kaira-card-sizes-row {
+    gap: 4px !important;
+    margin-bottom: 8px !important;
+  }
+  .kaira-size-pill {
+    padding: 3px 2px !important;
+    font-size: 8.5px !important;
+  }
+  .size-price-row {
+    padding-top: 6px !important;
+    margin-bottom: 8px !important;
+  }
+  .size-pill {
+    font-size: 8px !important;
+    padding: 2px 4px !important;
+  }
+  .price-wrap .final-price {
+    font-size: 13px !important;
+  }
+  .add-bag-btn {
+    padding: 7px 6px !important;
+    font-size: 8.5px !important;
+    letter-spacing: 0.1em !important;
+  }
+}
+
+/* Clean Human Luxury Card */
+.kaira-human-card {
+  background: #ffffff;
+  border: 1px solid #ebe6dd;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  cursor: pointer;
+}
+
+.kaira-human-card:hover {
+  transform: translateY(-4px);
+  border-color: #ded6c9;
+  box-shadow: 0 12px 28px rgba(24, 23, 22, 0.06);
+}
+
+.kaira-human-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #f4f1ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .kaira-human-stage {
+    aspect-ratio: unset !important;
+    height: 175px !important;
+    max-height: 175px !important;
+    padding: 8px 10px !important;
+  }
+}
+
+.kaira-subtle-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-family: var(--font-sans);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #181716;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(24, 23, 22, 0.1);
+  padding: 2px 7px;
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.kaira-wish-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  color: #6e6862;
+  transition: all 0.2s ease;
+}
+
+.kaira-wish-btn:hover {
+  color: #7c1d24;
+  background: #ffffff;
+}
+
+.flacon-holder {
+  width: 82%;
+  height: 82%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flacon-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+  filter: drop-shadow(0 10px 18px rgba(24, 23, 22, 0.12));
+}
+
+.kaira-human-card:hover .flacon-img {
+  transform: scale(1.05);
+}
+
+.hover-action-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: linear-gradient(to top, rgba(244, 241, 234, 0.95), transparent);
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.25s ease;
+  z-index: 3;
+}
+
+.kaira-human-card:hover .hover-action-wrap {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hover-quick-btn {
+  background: #181716;
+  color: #ffffff;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+/* Card Body */
+.kaira-human-body {
+  padding: 16px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.brand-tag {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7c1d24;
+}
+
+.category-tag {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #9c958c;
+}
+
+.product-title {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 400;
+  color: #181716;
+  margin-bottom: 4px;
+}
+
+.product-notes {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: #6e6862;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 14px;
+}
+
+/* Pricing Row - Clean & Uncongested */
+.kaira-card-pricing-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.kaira-card-pricing-row .final-price {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: #181716;
+  line-height: 1;
+}
+
+.kaira-card-pricing-row .old-price {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: #9c958c;
+  text-decoration: line-through;
+  line-height: 1;
+}
+
+/* Flacon Size Selector - Dedicated Full-Width Row */
+.kaira-card-sizes-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.kaira-size-pill {
+  flex: 1;
+  background: #faf8f5;
+  border: 1px solid #ded6c9;
+  color: #6e6862;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 4px 6px;
+  border-radius: 2px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.kaira-size-pill:hover {
+  border-color: #181716;
+  color: #181716;
+}
+
+.kaira-size-pill.active {
+  background: #181716;
+  border-color: #181716;
+  color: #ffffff;
+}
+
+/* Mobile See More Creations Button */
+.kaira-see-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  border: 1px solid #181716;
+  color: #181716;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: 100%;
+  max-width: 280px;
+}
+
+.kaira-see-more-btn:hover,
+.kaira-see-more-btn:active {
+  background-color: #181716;
+  color: #ffffff;
+}
+
+.size-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid #ebe6dd;
+  margin-bottom: 12px;
+}
+
+.size-pills {
+  display: flex;
+  gap: 4px;
+}
+
+.size-pill {
+  background: #faf8f5;
+  border: 1px solid #ded6c9;
+  color: #6e6862;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.size-pill.active {
+  background: #181716;
+  border-color: #181716;
+  color: #ffffff;
+}
+
+.price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.price-wrap .old-price {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: #9c958c;
+  text-decoration: line-through;
+}
+
+.price-wrap .final-price {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: #181716;
+}
+
+.add-bag-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: transparent;
+  border: 1px solid #181716;
+  color: #181716;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  padding: 9px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: auto;
+}
+
+.add-bag-btn:hover {
+  background-color: #7c1d24;
+  border-color: #7c1d24;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   THE OLFACTORY PYRAMID / NATURE REMEMBERS (Mobile-First Luxury Architecture)
+   ========================================================================== */
+.kaira-notes-section {
+  background-color: var(--bg-warm-subtle);
+  padding: 85px 0 95px;
+  color: var(--text-main);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.kaira-notes-header {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.kaira-notes-eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-brass);
+  margin-bottom: 8px;
+}
+
+.kaira-notes-title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 3.8vw, 44px);
+  font-weight: 400;
+  color: #231815;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+}
+
+.kaira-notes-subtitle {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 580px;
+}
+
+/* Horizontal Scrollable Pill Tabs Track */
+.kaira-notes-tab-track-wrap {
+  width: 100%;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px 0 12px;
+}
+
+.kaira-notes-tab-track-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.kaira-notes-tab-track {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: max-content;
+  margin: 0 auto;
+  padding: 4px 12px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 991.98px) {
+  .kaira-notes-tab-track {
+    margin: 0;
+    padding: 4px 16px;
+    scroll-snap-type: x proximity;
+  }
+}
+
+.kaira-notes-pill-tab {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border-medium);
+  background: #ffffff;
+  color: var(--text-main);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.2, 0.9, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.kaira-notes-pill-tab .tab-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--border-medium);
+  transition: background-color 0.25s ease;
+}
+
+.kaira-notes-pill-tab:hover {
+  border-color: var(--accent-brass);
+  color: var(--accent-burgundy);
+}
+
+.kaira-notes-pill-tab.active {
+  background: var(--accent-burgundy);
+  color: #ffffff;
+  border-color: var(--accent-burgundy);
+  box-shadow: 0 6px 18px rgba(64, 8, 19, 0.25);
+}
+
+.kaira-notes-pill-tab.active .tab-dot {
+  background-color: #ffffff;
+}
+
+/* Desktop 3-Column Elements */
+.kaira-notes-brand-badge {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-brass);
+}
+
+.kaira-notes-narrative-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  color: #231815;
+}
+
+.kaira-notes-narrative {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  line-height: 1.75;
+  color: #554943;
+}
+
+.kaira-notes-concentration-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.kaira-notes-concentration-info strong {
+  color: var(--accent-burgundy);
+  font-weight: 700;
+}
+
+.kaira-notes-experience-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  cursor: pointer;
+  transition: gap 0.25s ease;
+}
+
+.kaira-notes-experience-btn:hover {
+  gap: 12px;
+  color: var(--kaira-dark-wine);
+}
+
+.kaira-pyramid-flacon-stage {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #ffffff 0%, rgba(255, 255, 255, 0.4) 55%, transparent 75%);
+}
+
+.kaira-pyramid-flacon-wrap {
+  width: 220px;
+  height: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.kaira-pyramid-flacon-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 24px rgba(35, 24, 21, 0.25));
+  transition: transform 0.45s ease;
+}
+
+.kaira-pyramid-flacon-stage:hover .kaira-pyramid-flacon-img {
+  transform: scale(1.05);
+}
+
+.kaira-pyramid-flacon-shadow {
+  position: absolute;
+  bottom: 24px;
+  width: 140px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(35, 24, 21, 0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Pyramid Tier Breakdown */
+.kaira-pyramid-list {
+  padding-left: 8px;
+}
+
+.kaira-tier-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+
+.kaira-tier-dash {
+  color: var(--accent-brass);
+  font-weight: 700;
+}
+
+.kaira-tier-name {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #231815;
+  margin: 0;
+}
+
+.kaira-tier-desc {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.kaira-tier-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.kaira-note-chip {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1px solid var(--border-subtle);
+  color: #2b2725;
+}
+
+/* Mobile & Tablet Compact Integrated Card */
+.kaira-mobile-pyramid-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 16px 14px 18px;
+  box-shadow: 0 6px 20px rgba(64, 8, 19, 0.05);
+}
+
+.kaira-mobile-pyramid-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.kaira-mobile-pyramid-thumb-wrap {
+  width: 85px;
+  height: 100px;
+  flex-shrink: 0;
+  background-color: var(--bg-warm-stage);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.kaira-mobile-pyramid-thumb {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.12));
+}
+
+.kaira-mobile-pyramid-intro {
+  flex: 1;
+  min-width: 0;
+}
+
+.kaira-mobile-pyramid-badge {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  background-color: rgba(64, 8, 19, 0.07);
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+
+.kaira-mobile-pyramid-title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: #231815;
+  margin: 0 0 4px 0;
+  line-height: 1.25;
+}
+
+.kaira-mobile-pyramid-desc {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--text-muted);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.kaira-mobile-tiers-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kaira-mobile-tier {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.kaira-mobile-tier-label {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.kaira-mobile-tier-label .tier-tag {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent-burgundy);
+  text-transform: uppercase;
+}
+
+.kaira-mobile-tier-label .tier-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.kaira-mobile-tier-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.kaira-mobile-tier-chips .kaira-note-chip {
+  font-size: 10px;
+  padding: 2px 8px;
+}
+
+.kaira-mobile-experience-btn {
+  background-color: var(--accent-burgundy);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 11px 16px;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(64, 8, 19, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.kaira-mobile-experience-btn:hover {
+  background-color: var(--kaira-dark-wine);
+}
+
+/* ==========================================================================
+   THE KAIRA ATELIER JOURNAL / STORIES IN SCENT & RITUAL
+   ========================================================================== */
+.kaira-stories-section {
+  background-color: var(--bg-primary);
+  padding: 90px 0 100px;
+  position: relative;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.kaira-stories-header {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.kaira-stories-eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-brass);
+  margin-bottom: 8px;
+}
+
+.kaira-stories-title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 3.8vw, 44px);
+  font-weight: 400;
+  color: #231815;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+}
+
+.kaira-stories-subtitle {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 580px;
+}
+
+/* Stories Rail */
+.kaira-stories-rail-wrap {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.kaira-stories-rail-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.kaira-stories-rail {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+@media (max-width: 991.98px) {
+  .kaira-stories-rail {
+    display: flex;
+    width: max-content;
+    min-width: 100%;
+    margin: 0;
+    padding: 6px 4px 16px;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    align-items: stretch;
+  }
+  .kaira-story-rail-col {
+    flex: 0 0 calc(100vw - 56px);
+    max-width: 340px;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.kaira-story-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 6px 20px rgba(64, 8, 19, 0.04);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.kaira-story-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(64, 8, 19, 0.12);
+  border-color: rgba(155, 120, 74, 0.4);
+}
+
+.kaira-story-img-container {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--bg-warm-stage);
+}
+
+.kaira-story-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.65s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.kaira-story-card:hover .kaira-story-img {
+  transform: scale(1.06);
+}
+
+.kaira-story-tag-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(35, 24, 21, 0.88);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  padding: 3px 9px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.kaira-story-body {
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.kaira-story-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.kaira-story-read-time {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--accent-brass);
+}
+
+.kaira-story-card-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: #231815;
+  margin-bottom: 10px;
+  line-height: 1.35;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.kaira-story-card-summary {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  flex: 1;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.kaira-story-read-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-burgundy);
+  cursor: pointer;
+  transition: gap 0.25s ease, color 0.25s ease;
+  align-self: flex-start;
+}
+
+.kaira-story-read-btn .read-arrow {
+  font-size: 14px;
+  transition: transform 0.25s ease;
+}
+
+.kaira-story-card:hover .kaira-story-read-btn {
+  color: var(--kaira-dark-wine);
+  gap: 12px;
+}
+
+.kaira-story-card:hover .read-arrow {
+  transform: translateX(4px);
+}
+
+/* Modal Styling */
+.kaira-story-modal .modal-content {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: 8px;
+  box-shadow: 0 25px 60px rgba(35, 24, 21, 0.25);
+}
+
+.kaira-modal-tag {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--accent-brass);
+  text-transform: uppercase;
+}
+
+.kaira-modal-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  color: #231815;
+}
+
+.kaira-modal-text {
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: #4a3e38;
+}
+
+.kaira-modal-cta {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent-burgundy) !important;
+  text-decoration: none !important;
+}
+
+.kaira-modal-close-btn {
+  background: var(--bg-warm-stage);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 8px 18px;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.kaira-modal-close-btn:hover {
+  background: var(--border-medium);
+}
+
+/* --- JOIN THE JOURNEY --- */
+.velora-join-section {
+  background-color: var(--velora-wine-bg);
+  padding: 50px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.velora-join-banner {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+@media (max-width: 991.98px) {
+  .velora-join-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.velora-join-petal-wrap {
+  width: 180px;
+  height: 100px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.velora-join-petal-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.velora-join-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  gap: 30px;
+}
+
+@media (max-width: 991.98px) {
+  .velora-join-content {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.velora-join-title {
+  font-family: var(--velora-serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.velora-join-sub {
+  font-family: var(--velora-sans);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.velora-join-form {
+  display: flex;
+  align-items: center;
+  max-width: 440px;
+  width: 100%;
+}
+
+.velora-join-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  padding: 12px 16px;
+  color: #ffffff;
+  font-family: var(--velora-sans);
+  font-size: 12px;
+  outline: none;
+}
+
+.velora-join-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #ffffff;
+  color: #09090b;
+  border: 1px solid #ffffff;
+  border-radius: 0 4px 4px 0;
+  padding: 12px 22px;
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  white-space: nowrap;
+}
+
+.velora-join-btn:hover {
+  background-color: #ece5d8;
+}
+
+.velora-join-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e7c67c;
+  font-family: var(--velora-sans);
+  font-size: 13px;
+}
+
+/* =========================================================================
+   FOUNDER STORY SECTION (Exact Match to User Reference UI)
+   ========================================================================= */
+.kaira-founder-ref-section {
+  padding: 60px 0;
+  background-color: #faf8f5;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.kaira-founder-ref-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  padding: 44px 40px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.kaira-founder-ref-photo-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1.08;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #f0eee9;
+}
+
+.kaira-founder-ref-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.kaira-founder-ref-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 8px;
+}
+
+.kaira-founder-ref-tag {
+  font-family: var(--velora-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #55504a;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.kaira-founder-ref-name {
+  font-family: var(--velora-serif);
+  font-size: 34px;
+  font-weight: 400;
+  color: #181716;
+  line-height: 1.15;
+  margin-bottom: 22px;
+}
+
+.kaira-founder-ref-bio {
+  font-family: var(--velora-sans);
+  font-size: 13px;
+  line-height: 1.65;
+  color: #55504a;
+  max-width: 440px;
+  margin-bottom: 20px;
+}
+
+.kaira-founder-ref-socials {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.kaira-ref-social-btn {
+  width: 32px;
+  height: 32px;
+  background-color: #f4f3f0;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #2b2825;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.kaira-ref-social-btn:hover {
+  background-color: #181716;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.kaira-ref-cta-btn {
+  display: inline-block;
+  background-color: #181716;
+  color: #ffffff !important;
+  font-family: var(--velora-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  width: fit-content;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.kaira-ref-cta-btn:hover {
+  background-color: #7c1d24;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 767.98px) {
+  .kaira-founder-ref-card {
+    padding: 24px 18px;
+  }
+  .kaira-founder-ref-info {
+    padding-left: 0;
+    margin-top: 10px;
+  }
+  .kaira-founder-ref-name {
+    font-size: 28px;
+    margin-bottom: 14px;
+  }
+}
+
+/* =========================================================================
+   PINPOINT MAP SECTION (Framer-Style Interactive Radar Map)
+   ========================================================================= */
+.kaira-pinpoint-section {
+  padding: 50px 0 70px;
+  background-color: #faf8f5;
+}
+
+.kaira-directions-top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #181716;
+  text-decoration: none;
+  border-bottom: 1.5px solid #181716;
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.kaira-directions-top-btn:hover {
+  color: #7c1d24;
+  border-color: #7c1d24;
+}
+
+.kaira-pinpoint-card {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 380px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 32px -8px rgba(28, 25, 23, 0.06);
+  background: #ffffff;
+}
+
+/* Left Pane: Boutique Information & Direct Actions */
+.kaira-pinpoint-info-pane {
+  width: 360px;
+  flex-shrink: 0;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ffffff;
+  border-right: 1px solid rgba(0, 0, 0, 0.07);
+  z-index: 2;
+}
+
+.kaira-pinpoint-timing {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  color: #78726a;
+}
+
+/* Right Pane: Completely Unobstructed Map Stage */
+.kaira-pinpoint-map-pane {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background-color: #ede9e1;
+  min-height: 380px;
+}
+
+.kaira-coord-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: #615c56;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.kaira-map-vector-bg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Framer Pinpoint Pulsing Radar Beacon (Centered in open map space) */
+.kaira-framer-pinpoint-beacon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.pin-radar-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1.5px solid rgba(197, 154, 63, 0.85);
+  background-color: rgba(197, 154, 63, 0.15);
+  animation: framerRadar 2.6s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+}
+
+.pin-radar-ring-1 {
+  width: 44px;
+  height: 44px;
+}
+
+.pin-radar-ring-2 {
+  width: 80px;
+  height: 80px;
+  animation-delay: 0.9s;
+}
+
+@keyframes framerRadar {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.4);
+    opacity: 0;
+  }
+}
+
+.pin-radar-core {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #181716 0%, #7c1d24 100%);
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 4px 16px rgba(124, 29, 36, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.pin-tooltip-tag {
+  margin-top: 8px;
+  background: rgba(24, 23, 22, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-family: var(--velora-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.pin-tooltip-tag .tag-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #c59a3f;
+}
+
+.kaira-radar-beacon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+}
+
+.radar-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #25D366;
+  z-index: 2;
+}
+
+.radar-wave {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: rgba(37, 211, 102, 0.45);
+  animation: kairaRadarPulse 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@keyframes kairaRadarPulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.kaira-pinpoint-live-tag {
+  font-family: var(--velora-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1a7a40;
+}
+
+.kaira-pinpoint-store-title {
+  font-family: var(--velora-serif);
+  font-size: 17px;
+  font-weight: 600;
+  color: #181716;
+  margin: 3px 0 5px;
+}
+
+.kaira-pinpoint-address {
+  font-family: var(--velora-sans);
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: #615c56;
+}
+
+.kaira-pinpoint-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #181716;
+  color: #ffffff !important;
+  font-family: var(--velora-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.kaira-pinpoint-cta-btn:hover {
+  background: #7c1d24;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.kaira-pinpoint-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f2faf4;
+  color: #1b7a42 !important;
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  font-family: var(--velora-sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 9px 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.kaira-pinpoint-wa-btn:hover {
+  background: #25D366;
+  color: #ffffff !important;
+  border-color: #25D366;
+}
+
+@media (max-width: 899.98px) {
+  .kaira-pinpoint-card {
+    flex-direction: column;
+  }
+  .kaira-pinpoint-map-pane {
+    height: 240px;
+    min-height: 240px;
+    width: 100%;
+  }
+  .kaira-pinpoint-info-pane {
+    width: 100%;
+    padding: 24px 20px;
+    border-right: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.07);
+  }
+}
+
+/* =========================================================================
+   STANDARD MODERN LIGHT FOOTER (Vitrio Style Reference)
+   ========================================================================= */
+.kaira-standard-footer {
+  background-color: #faf8f5;
+  padding: 30px 0 40px;
+}
+
+.kaira-footer-card {
+  background: linear-gradient(155deg, #f7f5f0 0%, #ebe7df 100%);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 24px;
+  padding: 48px 44px 30px;
+  box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.kaira-brand-gem {
+  color: #c59a3f;
+  font-size: 14px;
+}
+
+.kaira-footer-logo-text {
+  font-family: var(--velora-serif);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: #181716;
+}
+
+.kaira-footer-badge {
+  font-family: var(--velora-sans);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #7c1d24;
+  background: rgba(124, 29, 36, 0.08);
+  padding: 2px 7px;
+  border-radius: 999px;
+  margin-left: 4px;
+}
+
+.kaira-footer-desc {
+  font-family: var(--velora-sans);
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: #55504a;
+  max-width: 380px;
+  margin-top: 8px;
+}
+
+/* Sleek Minimal Pill Subscribe Input */
+.kaira-subscribe-pill-box {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
+  padding: 4px 5px 4px 18px;
+  max-width: 350px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kaira-subscribe-pill-box:focus-within {
+  border-color: #181716;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+}
+
+.kaira-subscribe-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--velora-sans);
+  font-size: 12.5px;
+  color: #181716;
+  flex: 1;
+  min-width: 0;
+}
+
+.kaira-subscribe-input::placeholder {
+  color: #9c958c;
+}
+
+.kaira-subscribe-btn {
+  background: #181716;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.kaira-subscribe-btn:hover {
+  background: #7c1d24;
+  transform: translateY(-1px);
+}
+
+.kaira-subscribe-success {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--velora-sans);
+  font-size: 12px;
+  color: #1a7a40;
+  background: #edf8f0;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+/* Navigation Columns */
+.kaira-column-heading {
+  display: block;
+  font-family: var(--velora-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #181716;
+  margin-bottom: 14px;
+}
+
+.kaira-column-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kaira-column-links a {
+  font-family: var(--velora-sans);
+  font-size: 12.5px;
+  color: #5c5750;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.kaira-column-links a:hover {
+  color: #7c1d24;
+}
+
+.kaira-footer-divider {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.kaira-footer-copy {
+  font-family: var(--velora-sans);
+  font-size: 11.5px;
+  color: #78726a;
+}
+
+/* Vitrio Style Round Action Buttons */
+.kaira-footer-round-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.kaira-round-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #44403c;
+  text-decoration: none;
+  transition: all 0.22s ease;
+}
+
+.kaira-round-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+}
+
+.kaira-round-wa:hover {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.kaira-round-ig:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border-color: transparent;
+}
+
+.kaira-round-founder:hover {
+  background-color: #7c1d24;
+  border-color: #7c1d24;
+}
+
+.kaira-round-map:hover {
+  background-color: #c59a3f;
+  border-color: #c59a3f;
+}
+
+/* WhatsApp Checkout Button in Drawer */
+.kaira-checkout-wa-btn {
+  background-color: #25D366 !important;
+  color: #ffffff !important;
+  letter-spacing: 0.12em !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+  transition: all 0.25s ease;
+}
+
+.kaira-checkout-wa-btn:hover {
+  background-color: #20ba59 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+
+.kaira-wa-success-badge {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background-color: rgba(37, 211, 102, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+@media (max-width: 575.98px) {
+  .kaira-footer-card {
+    border-radius: 18px;
+    padding: 28px 20px 22px;
+  }
+  .kaira-subscribe-pill-box {
+    max-width: 100%;
+  }
+}
+
+.velora-copyright {
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.velora-manifesto {
+  font-family: var(--velora-serif);
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.velora-toast-msg {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #121110;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-family: var(--velora-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Seamless dark card styling for uploaded black-background master flacon */
+.velora-product-card {
+  background-color: #141312 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.velora-card-stage {
+  background-color: #000000 !important;
+  padding: 0 !important;
+}
+
+.velora-flacon-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.velora-card-details {
+  background-color: #141312 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.velora-card-name {
+  color: #ffffff !important;
+}
+
+.velora-card-concentration {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.velora-bag-add-btn {
+  color: #ffffff !important;
+}
+
+.velora-bag-add-btn:hover {
+  color: #e7c67c !important;
+}
+
+.velora-card-pricing-row {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.velora-price-tag {
+  color: #e7c67c !important;
+}
+
+.velora-size-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+.velora-size-btn.active {
+  background: #e7c67c !important;
+  color: #09090b !important;
+  border-color: #e7c67c !important;
+}
+
+.velora-card-wish-btn {
+  background: rgba(0, 0, 0, 0.6) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Exact Hero Section Matching VELORA Reference */
+.velora-hero-exact-section {
+  width: 100%;
+  background-color: #09090b;
+}
+
+.velora-hero-banner-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #09090b;
+}
+
+.velora-hero-exact-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.velora-hero-hidden-cta {
+  position: absolute;
+  top: 72%;
+  left: 6.8%;
+  width: 23%;
+  height: 18%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.velora-hero-info-bar {
+  background: #111010;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 14px 0;
+  color: #ffffff;
+}
+
+.velora-info-badge {
+  font-family: var(--velora-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #e7c67c;
+  background: rgba(231, 198, 124, 0.12);
+  border: 1px solid rgba(231, 198, 124, 0.35);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.velora-info-text {
+  font-family: var(--velora-sans);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.velora-price-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  color: #ffffff;
+}
+
+.velora-price-pill strong {
+  color: #e7c67c;
+}
+
+.velora-price-pill.highlight {
+  background: rgba(231, 198, 124, 0.15);
+  border-color: rgba(231, 198, 124, 0.4);
+}
+
+.velora-shop-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  color: #09090b !important;
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 6px 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.velora-shop-link:hover {
+  background: #e7c67c;
+}
+
+/* Fix side panel in Modern Classics */
+.velora-editorial-side-panel {
+  width: 320px;
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #0b0b0d;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1199.98px) {
+  .velora-editorial-side-panel {
+    display: none;
+  }
+}
+
+.velora-editorial-side-panel .velora-side-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  transition: transform 0.8s ease;
+}
+
+.velora-editorial-side-panel:hover .velora-side-bg-img {
+  transform: scale(1.05);
+}
+
+.velora-side-editorial-content {
+  position: relative;
+  z-index: 2;
+  padding: 32px 24px;
+  background: linear-gradient(to top, rgba(9, 9, 11, 0.95) 0%, rgba(9, 9, 11, 0.6) 60%, transparent 100%);
+  color: #ffffff;
+}
+
+.editorial-mini-tag {
+  display: block;
+  font-family: var(--velora-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #e7c67c;
+  margin-bottom: 12px;
+}
+
+.editorial-quote {
+  font-family: var(--velora-serif);
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 400;
+  font-style: italic;
+  color: #fdfbf7;
+  margin-bottom: 12px;
+}
+
+.editorial-meta {
+  font-family: var(--velora-sans);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 16px;
+}
+
+.editorial-price-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(231, 198, 124, 0.15);
+  border: 1px solid rgba(231, 198, 124, 0.35);
+  padding: 6px 14px;
+  border-radius: 4px;
+}
+
+.editorial-price-badge span {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.editorial-price-badge strong {
+  font-family: var(--velora-serif);
+  font-size: 16px;
+  color: #e7c67c;
+}
+
+/* ==========================================================================
+   ULTRA-LUXURY HIGH-RES CINEMATIC HERO SECTION
+   ========================================================================== */
+/* ==========================================================================
+   KAIRA ULTRA-LUXURY CINEMATIC HERO SECTION
+   ========================================================================== */
+/* ==========================================================================
+   HUMAN LUXURY HERO STYLES
+   ========================================================================== */
+/* ==========================================================================
+   EXACT REFERENCE HEADER & HERO STYLES
+   ========================================================================== */
+:root {
+  --kaira-burgundy: #4a0e1c;
+  --kaira-dark-wine: #3d0814;
+  --kaira-blush-bg: #f7f0eb;
+  --kaira-gold-accent: #9b784a;
+  --kaira-text-main: #1c1917;
+  --kaira-text-sub: #6e635b;
+}
+
+/* Header */
+.kaira-ref-header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.kaira-ref-top-bar {
+  background-color: var(--kaira-dark-wine, #3d0814);
+  color: #f7ecd5;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  padding: 8px 0;
+  text-transform: uppercase;
+}
+
+.kaira-ref-top-bar .bar-pipe {
+  opacity: 0.4;
+  margin: 0 4px;
+}
+
+.kaira-ref-navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ebe5df;
+  padding: 16px 0;
+  transition: all 0.3s ease;
+}
+
+.kaira-ref-navbar.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 12px 0;
+}
+
+.kaira-ref-navbar-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kaira-nav-left, .kaira-nav-right {
+  flex: 1;
+}
+
+.mobile-toggle-btn {
+  color: var(--kaira-text-main, #1c1917);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 38px;
+  height: 38px;
+  transition: color 0.2s ease;
+}
+
+.mobile-toggle-btn:hover {
+  color: var(--kaira-burgundy, #4a0e1c);
+}
+
+.nav-item-link {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kaira-text-main, #1c1917);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  transition: color 0.2s ease;
+}
+
+.nav-item-link:hover {
+  color: var(--kaira-burgundy, #4a0e1c);
+}
+
+.dropdown-arrow {
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.kaira-logo-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.kaira-logo-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  letter-spacing: 0.08em;
+  color: var(--kaira-burgundy, #4a0e1c);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.kaira-logo-subtitle {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #8a7a70;
+  margin-top: 3px;
+}
+
+.action-icon-btn {
+  color: var(--kaira-text-main, #1c1917);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.action-icon-btn:hover {
+  color: var(--kaira-burgundy, #4a0e1c);
+}
+
+.cart-badge-count {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  background-color: var(--kaira-burgundy, #4a0e1c);
+  color: #ffffff;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kaira-header-search-wrap input.kaira-header-search-input {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 220px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #ebe5df;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-right: 8px;
+}
+
+.kaira-header-search-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 240px;
+  background: #ffffff;
+  border: 1px solid #ebe5df;
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  margin-top: 8px;
+  z-index: 1001;
+}
+
+.kaira-header-search-dropdown .search-item {
+  cursor: pointer;
+  border-bottom: 1px solid #f7f0eb;
+  transition: background 0.2s ease;
+}
+
+.kaira-header-search-dropdown .search-item:hover {
+  background: #f7f0eb;
+}
+
+/* Mobile Nav Drawer */
+.kaira-mobile-nav-drawer {
+  background: #ffffff;
+  border-top: 1px solid #ebe5df;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.kaira-mobile-nav-drawer a {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kaira-text-main, #1c1917);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   KAIRA UNISEX FULL BACKGROUND HERO SECTION
+   ========================================================================== */
+.kaira-unisex-hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: #12100f;
+}
+
+.kaira-unisex-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  z-index: 1;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kaira-unisex-hero-section:hover .kaira-unisex-hero-bg {
+  transform: scale(1.02);
+}
+
+.kaira-unisex-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(to right, rgba(16, 14, 13, 0.94) 0%, rgba(16, 14, 13, 0.78) 46%, rgba(16, 14, 13, 0.22) 78%, transparent 100%),
+    linear-gradient(to top, rgba(16, 14, 13, 0.88) 0%, transparent 28%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.kaira-hero-corner-unisex {
+  position: absolute;
+  top: 36px;
+  right: 50px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.kaira-unisex-hero-content {
+  position: relative;
+  z-index: 3;
+  padding: 110px 0 65px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.kaira-unisex-hero-text-block {
+  max-width: 600px;
+}
+
+.kaira-unisex-badge {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: rgba(231, 198, 124, 0.15);
+  color: #e7c67c;
+  border: 1px solid rgba(231, 198, 124, 0.4);
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+
+.kaira-unisex-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.kaira-unisex-hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 5.2vw, 70px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.kaira-unisex-hero-title .serif-italic {
+  font-style: italic;
+  font-weight: 300;
+  background: linear-gradient(135deg, #ffffff 30%, #e7c67c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.kaira-unisex-hero-desc {
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 1.25vw, 15px);
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 2rem;
+  max-width: 510px;
+}
+
+.kaira-unisex-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #7c1d24;
+  color: #ffffff !important;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 14px 30px;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 10px 24px rgba(124, 29, 36, 0.35);
+}
+
+.kaira-unisex-cta-btn:hover {
+  background-color: #63141a;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(124, 29, 36, 0.5);
+}
+
+.kaira-unisex-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff !important;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 13px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
+}
+
+.kaira-unisex-secondary-btn:hover {
+  border-color: #e7c67c;
+  color: #e7c67c !important;
+  background: rgba(231, 198, 124, 0.08);
+}
+
+/* Features Row */
+.kaira-unisex-features-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 26px;
+}
+
+.unisex-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.unisex-feature-item .feature-icon {
+  font-size: 18px;
+  color: #e7c67c;
+  opacity: 0.9;
+}
+
+.unisex-feature-item .feature-label {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Bottom Ticker */
+.kaira-unisex-ticker-bar {
+  background-color: #0b0a09;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
+.kaira-unisex-ticker-bar .bullet {
+  color: #e7c67c;
+  font-size: 9px;
+  margin-right: 6px;
+}
+
+/* ==========================================================================
+   PRODUCT CARDS MATCHING EXACT USER SCREENSHOT
+   ========================================================================== */
+.velora-badge-stack {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 4;
+}
+
+.velora-discount-pill {
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  font-weight: 700;
+  background-color: #b91c1c;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 4px;
+  line-height: 1.2;
+  align-self: flex-start;
+  box-shadow: 0 2px 6px rgba(185, 28, 28, 0.3);
+}
+
+.velora-bestseller-pill {
+  font-family: var(--velora-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background-color: #111111;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 4px;
+  line-height: 1.2;
+  align-self: flex-start;
+}
+
+.velora-card-wish-circle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 4;
+  color: #444444;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.velora-card-wish-circle:hover {
+  transform: scale(1.1);
+  background-color: #fff;
+  color: #e11d48;
+}
+
+.velora-card-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 50% 45%, #ffffff 0%, #f4f2ee 65%, #eae6de 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.velora-card-img-container {
+  width: 85%;
+  height: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.velora-flacon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.25));
+}
+
+.velora-product-card:hover .velora-flacon-img {
+  transform: scale(1.06);
+}
+
+.velora-quick-view-overlay {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  opacity: 0.9;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.velora-quick-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #1a1a1a;
+  font-family: var(--velora-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s ease;
+}
+
+.velora-quick-view-btn span.material-symbols-outlined {
+  font-size: 14px;
+}
+
+.velora-quick-view-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.velora-old-price {
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  text-decoration: line-through;
+  color: #8c857b;
+}
+
+/* Olfactory Pyramid Flacon Spotlight in Nature Remembers */
+.velora-pyramid-flacon-wrap {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.velora-pyramid-flacon-img {
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.25));
+  transition: transform 0.5s ease;
+}
+
+.velora-pyramid-flacon-shadow {
+  width: 180px;
+  height: 24px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.25) 0%, transparent 70%);
+  margin: -10px auto 0;
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   FIND YOUR SIGNATURE SCENT (EXPLORE OUR COLLECTIONS - SECTION 2)
+   ========================================================================== */
+.kaira-signature-section {
+  background-color: #fbf9f6;
+  padding: 70px 0 65px;
+  border-bottom: 1px solid #eee8df;
+}
+
+.kaira-signature-eyebrow {
+  display: block;
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #b8934a;
+  margin-bottom: 8px;
+}
+
+.kaira-signature-title {
+  font-family: var(--velora-serif);
+  font-size: clamp(28px, 3.4vw, 42px);
+  font-weight: 400;
+  color: #141312;
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+}
+
+.kaira-signature-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  max-width: 220px;
+  margin: 0 auto 36px;
+}
+
+.kaira-signature-divider .divider-line {
+  flex: 1;
+  height: 1px;
+  background: #dfd7cb;
+}
+
+.kaira-signature-divider .divider-ornament {
+  color: #b8934a;
+  font-size: 11px;
+}
+
+.kaira-collection-card {
+  display: block;
+  position: relative;
+  background-color: #0e0d0c;
+  border-radius: 6px;
+  overflow: hidden;
+  text-decoration: none !important;
+  color: #ffffff !important;
+  transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.kaira-collection-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(231, 198, 124, 0.3);
+  border-color: rgba(231, 198, 124, 0.45);
+}
+
+.kaira-collection-card:focus-visible {
+  outline: 2px solid #e7c67c;
+  outline-offset: 3px;
+}
+
+.kaira-collection-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  position: relative;
+  display: block;
+}
+
+.kaira-collection-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s cubic-bezier(0.2, 0.9, 0.3, 1), filter 0.4s ease;
+}
+
+.kaira-collection-card:hover .kaira-collection-card-img {
+  transform: scale(1.035);
+}
+
+.kaira-collection-card-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 72% 50%, rgba(231, 198, 124, 0.14) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.kaira-collection-card:hover .kaira-collection-card-glow {
+  opacity: 1;
+}
+
+/* Backward-compatible flex layout rules if plain text stage is used */
+.kaira-card-text {
+  flex: 1;
+  z-index: 2;
+  padding-right: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.kaira-card-category {
+  font-family: var(--velora-sans);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #e7c67c;
+  margin: 0 0 6px;
+}
+
+.kaira-card-tagline {
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.45;
+  margin: 0 0 18px;
+  max-width: 140px;
+}
+
+.kaira-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--velora-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.kaira-card-cta .cta-arrow {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+.kaira-collection-card:hover .kaira-card-cta {
+  color: #e7c67c;
+  gap: 8px;
+}
+
+.kaira-collection-card:hover .cta-arrow {
+  transform: translateX(3px);
+}
+
+.kaira-card-bottle-stage {
+  width: 120px;
+  height: 145px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kaira-collection-bottle-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.7));
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.kaira-collection-card:hover .kaira-collection-bottle-img {
+  transform: scale(1.08) translateY(-3px);
+}
+
+.kaira-bottle-ground-glow {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(231, 198, 124, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   KAIRA Bespoke Hero (Authentic Kaira Bottles + Luxury Boudoir Vanity)
+   ========================================================================== */
+.kaira-bespoke-hero {
+  position: relative;
+  width: 100%;
+  min-height: 640px;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.kaira-hero-stage-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.kaira-hero-backdrop-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 78% center;
+  display: block;
+}
+
+.kaira-hero-backdrop-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(251, 245, 239, 0.96) 0%,
+    rgba(251, 245, 239, 0.9) 36%,
+    rgba(251, 245, 239, 0.45) 54%,
+    rgba(251, 245, 239, 0) 75%
+  );
+  pointer-events: none;
+}
+
+@media (max-width: 991px) {
+  .kaira-hero-backdrop-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(251, 245, 239, 0.96) 0%,
+      rgba(251, 245, 239, 0.92) 50%,
+      rgba(251, 245, 239, 0.5) 100%
+    );
+  }
+}
+
+.kaira-hero-content-container {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1680px;
+  margin: 0 auto;
+}
+
+.min-vh-hero {
+  min-height: 640px;
+  padding: 60px 0 50px;
+}
+
+.kaira-hero-editorial-col {
+  z-index: 10;
+}
+
+.kaira-hero-editorial-card {
+  max-width: 550px;
+}
+
+.kaira-hero-eyebrow-wrap {
+  margin-bottom: 16px;
+}
+
+.kaira-hero-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-brass);
+}
+
+.kaira-hero-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(34px, 4.5vw, 56px);
+  font-weight: 400;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  color: #231815;
+  margin-bottom: 22px;
+}
+
+.kaira-hero-headline-italic {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-burgundy);
+}
+
+.kaira-hero-description {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.68;
+  color: #554943;
+  margin-bottom: 34px;
+  max-width: 480px;
+}
+
+.kaira-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 46px;
+}
+
+.kaira-hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-burgundy);
+  color: #ffffff !important;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 15px 34px;
+  border-radius: 3px;
+  text-decoration: none !important;
+  box-shadow: 0 8px 24px rgba(64, 8, 19, 0.28);
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.kaira-hero-btn-primary:hover {
+  background-color: var(--kaira-dark-wine);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(64, 8, 19, 0.45);
+  color: #ffffff !important;
+}
+
+.kaira-hero-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(155, 120, 74, 0.22);
+}
+
+.kaira-trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kaira-trust-icon {
+  width: 15px;
+  height: 15px;
+  color: var(--accent-brass);
+  flex-shrink: 0;
+}
+
+.kaira-trust-label {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #63554e;
+}
+
+/* ==========================================================================
+   GLOBAL MOBILE-FIRST OPTIMIZATION (< 768px)
+   Eliminates excessive vertical scrolling, giant gaps, and oversized components
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  /* 1. Header & Top Bar */
+  .kaira-ref-top-bar {
+    padding: 6px 0 !important;
+    font-size: 9.5px !important;
+  }
+  .kaira-ref-navbar {
+    padding: 8px 0 !important;
+  }
+  .kaira-ref-navbar-grid {
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+  .kaira-mobile-toggle-col {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+  .mobile-toggle-btn {
+    width: 38px !important;
+    height: 38px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    color: var(--kaira-text-main, #1c1917) !important;
+  }
+  .kaira-nav-center {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .kaira-logo-title {
+    font-size: 22px !important;
+    letter-spacing: 0.1em !important;
+  }
+  .kaira-logo-subtitle {
+    font-size: 8px !important;
+    letter-spacing: 0.28em !important;
+  }
+  .kaira-nav-right {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    flex: none !important;
+  }
+
+  /* 2. Hero Section */
+  .kaira-bespoke-hero {
+    min-height: auto !important;
+  }
+  .min-vh-hero {
+    min-height: auto !important;
+    padding: 28px 0 24px !important;
+  }
+  .kaira-hero-headline {
+    font-size: 28px !important;
+    line-height: 1.18 !important;
+    margin-bottom: 12px !important;
+  }
+  .kaira-hero-description {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 20px !important;
+  }
+  .kaira-hero-actions {
+    margin-bottom: 20px !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+  }
+  .kaira-hero-btn-primary {
+    width: auto !important;
+    max-width: 240px !important;
+    display: inline-flex !important;
+    padding: 10px 22px !important;
+    font-size: 10px !important;
+    letter-spacing: 0.14em !important;
+    border-radius: 2px !important;
+  }
+  .kaira-hero-trust-row {
+    padding-top: 16px !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px 8px !important;
+  }
+  .kaira-trust-item {
+    gap: 6px !important;
+  }
+  .kaira-trust-icon {
+    width: 13px !important;
+    height: 13px !important;
+  }
+  .kaira-trust-label {
+    font-size: 8.5px !important;
+    line-height: 1.25 !important;
+  }
+
+  /* 3. Signature Collections (2x2 Grid) */
+  .kaira-signature-section {
+    padding: 38px 0 34px !important;
+  }
+  .kaira-signature-eyebrow {
+    font-size: 9.5px !important;
+    margin-bottom: 4px !important;
+  }
+  .kaira-signature-title {
+    font-size: 24px !important;
+    margin-bottom: 8px !important;
+  }
+  .kaira-signature-divider {
+    margin: 0 auto 20px !important;
+    max-width: 160px !important;
+  }
+
+  /* 4. Scent Families */
+  .velora-scent-families-section {
+    padding: 38px 0 34px !important;
+  }
+  .velora-section-eyebrow {
+    font-size: 9.5px !important;
+    margin-bottom: 4px !important;
+  }
+  .velora-section-title {
+    font-size: 24px !important;
+  }
+
+  /* 5. Modern Classics Catalog */
+  .kaira-human-classics-section {
+    padding: 40px 0 36px !important;
+  }
+  .kaira-editorial-label {
+    font-size: 9.5px !important;
+    margin-bottom: 4px !important;
+  }
+  .kaira-editorial-heading {
+    font-size: 24px !important;
+    margin-bottom: 6px !important;
+  }
+  .kaira-editorial-subheading {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
+  }
+  .kaira-card-mobile-hidden {
+    display: none !important;
+  }
+
+  /* 6. Nature Remembers (The Olfactory Pyramid) */
+  .kaira-notes-section {
+    padding: 40px 0 36px !important;
+  }
+  .kaira-notes-eyebrow {
+    font-size: 9.5px !important;
+    margin-bottom: 4px !important;
+  }
+  .kaira-notes-title {
+    font-size: 24px !important;
+    margin-bottom: 6px !important;
+  }
+  .kaira-notes-subtitle {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+  .kaira-notes-pill-tab {
+    padding: 7px 14px !important;
+    font-size: 10px !important;
+  }
+
+  /* 7. Stories in Scent */
+  .kaira-stories-section {
+    padding: 40px 0 36px !important;
+  }
+  .kaira-stories-eyebrow {
+    font-size: 9.5px !important;
+    margin-bottom: 4px !important;
+  }
+  .kaira-stories-title {
+    font-size: 24px !important;
+    margin-bottom: 6px !important;
+  }
+  .kaira-stories-subtitle {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* 8. Join the Journey (Newsletter) */
+  .velora-join-section {
+    padding: 34px 0 30px !important;
+  }
+  .velora-join-title {
+    font-size: 22px !important;
+    margin-bottom: 6px !important;
+  }
+  .velora-join-sub {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
+  }
+  .velora-join-form {
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .velora-join-input {
+    width: 100% !important;
+    height: 44px !important;
+  }
+  .velora-join-btn {
+    width: 100% !important;
+    height: 44px !important;
+    justify-content: center !important;
+  }
+
+  /* 9. Footer */
+  .kaira-footer-section {
+    padding: 38px 0 24px !important;
+  }
+
+  /* 10. Product Detail Page Mobile Optimization (Compact & Refined) */
+  .detail-container {
+    padding-top: 10px !important;
+    padding-bottom: 24px !important;
+  }
+  .breadcrumb-back {
+    font-size: 11px !important;
+  }
+  .luxury-detail-stage {
+    aspect-ratio: auto !important;
+    height: 210px !important;
+    max-height: 210px !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    margin-bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: radial-gradient(circle at center, #ffffff 40%, #f7f4ef 100%) !important;
+  }
+  .detail-hero-img {
+    max-height: 180px !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+  .detail-image-badge-pill {
+    top: 10px !important;
+    left: 10px !important;
+    padding: 3px 8px !important;
+    font-size: 8.5px !important;
+  }
+  .detail-accords-strip {
+    margin-top: 6px !important;
+    gap: 4px !important;
+  }
+  .accord-chip {
+    padding: 4px 5px !important;
+    gap: 4px !important;
+    border-radius: 4px !important;
+  }
+  .accord-chip .material-symbols-outlined {
+    font-size: 13px !important;
+  }
+  .accord-chip strong {
+    font-size: 8.5px !important;
+    line-height: 1.1;
+  }
+  .accord-chip small {
+    font-size: 6.5px !important;
+    letter-spacing: 0.02em;
+  }
+  .detail-brand-tag {
+    font-size: 8.5px !important;
+  }
+  .detail-category-badge {
+    font-size: 8px !important;
+    padding: 2px 7px !important;
+  }
+  .detail-main-title {
+    font-size: 19px !important;
+    line-height: 1.15 !important;
+    margin-bottom: 2px !important;
+  }
+  .detail-pricing-box {
+    margin-bottom: 8px !important;
+    gap: 8px !important;
+  }
+  .detail-price-main {
+    font-size: 20px !important;
+  }
+  .detail-price-compare {
+    font-size: 13.5px !important;
+  }
+  .detail-savings-badge {
+    font-size: 8px !important;
+    padding: 2px 6px !important;
+  }
+  .detail-narrative {
+    font-size: 11px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 6px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  .detail-narrative.expanded {
+    -webkit-line-clamp: unset !important;
+    overflow: visible !important;
+  }
+  .detail-size-section {
+    margin-bottom: 10px !important;
+  }
+  .detail-size-btn {
+    padding: 7px 10px !important;
+    border-radius: 4px !important;
+    min-height: 38px !important;
+    justify-content: center !important;
+  }
+  .size-btn-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: baseline !important;
+    gap: 5px !important;
+  }
+  .size-volume {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+  }
+  .size-cost {
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+  }
+  .size-mrp {
+    font-size: 8.5px !important;
+  }
+  .size-badge-value {
+    font-size: 7px !important;
+    padding: 1px 4px !important;
+    top: -7px !important;
+    right: 5px !important;
+  }
+  .detail-size-guide-hint {
+    font-size: 8.5px !important;
+  }
+  .detail-qty-control {
+    width: 68px !important;
+    height: 36px !important;
+  }
+  .detail-qty-control button {
+    width: 22px !important;
+    font-size: 13px !important;
+  }
+  .detail-qty-control span {
+    font-size: 11px !important;
+  }
+  .detail-add-btn {
+    height: 36px !important;
+    padding: 0 10px !important;
+    font-size: 9.5px !important;
+    letter-spacing: 0.08em !important;
+  }
+  .detail-wishlist-toggle {
+    width: 36px !important;
+    height: 36px !important;
+    flex-shrink: 0 !important;
+  }
+  .olfactory-pyramid-card {
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+    border-radius: 6px !important;
+  }
+  .pyramid-header {
+    margin-bottom: 8px !important;
+    padding-bottom: 6px !important;
+    gap: 4px !important;
+  }
+  .pyramid-title {
+    font-size: 12px !important;
+  }
+  .pyramid-tier {
+    margin-bottom: 6px !important;
+  }
+  .pyramid-tier-label {
+    margin-bottom: 2px !important;
+  }
+  .tier-badge {
+    font-size: 7.5px !important;
+  }
+  .tier-timing {
+    font-size: 7.5px !important;
+  }
+  .pyramid-tags {
+    gap: 3px !important;
+  }
+  .note-pill {
+    font-size: 8.5px !important;
+    padding: 1px 6px !important;
+  }
+  .detail-accordion {
+    margin-top: 10px !important;
+  }
+  .detail-accordion-trigger {
+    padding: 8px 0 !important;
+    font-size: 9.5px !important;
+  }
+  .detail-accordion-body {
+    font-size: 10px !important;
+    line-height: 1.4 !important;
+    padding-bottom: 6px !important;
+  }
+  .perfume-section-title {
+    font-size: 18px !important;
+  }
+  .luxury-product-card {
+    border-radius: 8px !important;
+  }
+  .luxury-badge-stack {
+    top: 8px !important;
+    left: 8px !important;
+    max-width: calc(100% - 44px) !important;
+  }
+  .luxury-pill-badge {
+    font-size: 8px !important;
+    padding: 2px 6px !important;
+    letter-spacing: 0.08em !important;
+  }
+  .luxury-wishlist-btn {
+    top: 8px !important;
+    right: 8px !important;
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .luxury-wishlist-btn span {
+    font-size: 15px !important;
+  }
+  .luxury-card-content {
+    padding: 8px 8px 10px !important;
+  }
+  .luxury-card-meta {
+    margin-bottom: 2px !important;
+  }
+  .luxury-meta-brand {
+    font-size: 8px !important;
+  }
+  .luxury-meta-category {
+    font-size: 7.5px !important;
+  }
+  .luxury-card-title {
+    font-size: 12px !important;
+    margin-bottom: 3px !important;
+  }
+  .luxury-card-pricing {
+    margin-bottom: 6px !important;
+    gap: 5px !important;
+  }
+  .luxury-price-current {
+    font-size: 13.5px !important;
+  }
+  .luxury-price-original {
+    font-size: 10px !important;
+  }
+  .luxury-size-pills-row {
+    gap: 4px !important;
+    margin-bottom: 6px !important;
+  }
+  .luxury-size-pill {
+    padding: 3px 2px !important;
+    font-size: 8.5px !important;
+  }
+  .luxury-add-cart-btn {
+    padding: 6px 8px !important;
+    font-size: 8.5px !important;
+    letter-spacing: 0.1em !important;
+  }
+}
+
+/* =========================================================================
+   GLOBAL UNIFIED LUXURY CONTAINER
+   Ensures ALL sections share the EXACT same width, margins, and padding
+   ========================================================================= */
+.kaira-ref-top-bar > .container-fluid,
+.kaira-ref-navbar > .container-fluid,
+.kaira-bespoke-hero > .container-fluid,
+.kaira-hero-content-container,
+.kaira-signature-section > .container-fluid,
+.velora-scent-families-section > .container-fluid,
+.kaira-human-classics-section > .container-fluid,
+.kaira-notes-section > .container-fluid,
+.kaira-stories-section > .container-fluid,
+.kaira-founder-ref-section > .container-fluid,
+.kaira-pinpoint-section > .container-fluid,
+.kaira-standard-footer > .container-fluid,
+.product-detail-view .container,
+.product-detail-view .container-fluid,
+main > .container-fluid {
+  max-width: 1440px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 32px !important;
+  padding-right: 32px !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 767.98px) {
+  .kaira-ref-top-bar > .container-fluid,
+  .kaira-ref-navbar > .container-fluid,
+  .kaira-bespoke-hero > .container-fluid,
+  .kaira-hero-content-container,
+  .kaira-signature-section > .container-fluid,
+  .velora-scent-families-section > .container-fluid,
+  .kaira-human-classics-section > .container-fluid,
+  .kaira-notes-section > .container-fluid,
+  .kaira-stories-section > .container-fluid,
+  .kaira-founder-ref-section > .container-fluid,
+  .kaira-pinpoint-section > .container-fluid,
+  .kaira-standard-footer > .container-fluid,
+  .product-detail-view .container,
+  .product-detail-view .container-fluid,
+  main > .container-fluid {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+
+
+

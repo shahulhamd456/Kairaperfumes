@@ -1,0 +1,5 @@
+/* Reset any non-bootstrap styles here if necessary. All layout styles are defined in App.css */
+body {
+  margin: 0;
+  padding: 0;
+}
