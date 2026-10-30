@@ -168,15 +168,29 @@ export default function NotesExplorer({ onProductSelect, onAddToCart }) {
                     className="btn-quick-add"
                     onClick={() => onAddToCart(activeProduct, 1, '50ml', '₹599')}
                   >
-                    <span className="material-symbols-outlined">shopping_bag</span>
-                    Quick Add 50ml (₹599)
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{ flexShrink: 0 }}
+                    >
+                      <circle cx="9" cy="21" r="1"></circle>
+                      <circle cx="20" cy="21" r="1"></circle>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span>Add to Cart 50ml (₹599)</span>
                   </button>
                   <button
                     type="button"
                     className="btn-quick-add secondary"
                     onClick={() => onAddToCart(activeProduct, 1, '30ml', '₹349')}
                   >
-                    Quick Add 30ml (₹349)
+                    <span>Add 30ml (₹349)</span>
                   </button>
                 </div>
               </div>

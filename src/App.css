@@ -3499,18 +3499,18 @@ a.hover-text-primary:hover {
 }
 
 .kaira-notes-tab-track {
-  display: flex;
+  display: inline-flex;
+  min-width: 100%;
+  justify-content: center;
   align-items: center;
   gap: 10px;
-  width: max-content;
-  margin: 0 auto;
-  padding: 4px 12px;
+  padding: 4px 20px;
   box-sizing: border-box;
 }
 
 @media (max-width: 991.98px) {
   .kaira-notes-tab-track {
-    margin: 0;
+    justify-content: flex-start;
     padding: 4px 16px;
     scroll-snap-type: x proximity;
   }
@@ -4340,6 +4340,9 @@ a.hover-text-primary:hover {
   justify-content: center;
   color: #2b2825;
   text-decoration: none;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-sizing: border-box;
   transition: all 0.2s ease;
 }
 
