@@ -92,3 +92,4 @@ Once verified:
 - **Rich Results Test**: Test structured data at [Google Rich Results Test](https://search.google.com/test/rich-results) by pasting your URL or code snippet from `index.html`.
 - **Schema Validator**: Validate Schema.org formatting at [validator.schema.org](https://validator.schema.org/).
 - **Robots Tester**: Verify that Googlebot can access all assets without restriction.
+

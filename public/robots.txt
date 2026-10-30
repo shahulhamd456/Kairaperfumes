@@ -18,3 +18,4 @@ Host: https://kairaperfumes.com
 
 # Primary XML Sitemap for Google Search Console & Bing Webmaster
 Sitemap: https://kairaperfumes.com/sitemap.xml
+
