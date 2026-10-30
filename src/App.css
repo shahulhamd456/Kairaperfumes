@@ -3,24 +3,40 @@
 
 :root {
   /* Natural Human Luxury Palette */
-  --bg-primary: #fbf5ef;        /* Warm alabaster boudoir sand matching reference */
-  --bg-surface: #ffffff;        /* Pure card surface */
-  --bg-warm-stage: #f5ece4;     /* Soft ivory flacon staging */
-  --bg-warm-subtle: #f8efe8;    /* Delicate sand container */
-  --bg-dark-editorial: #151413; /* Warm espresso charcoal (NOT pitch black) */
+  --bg-primary: #fbf5ef;
+  /* Warm alabaster boudoir sand matching reference */
+  --bg-surface: #ffffff;
+  /* Pure card surface */
+  --bg-warm-stage: #f5ece4;
+  /* Soft ivory flacon staging */
+  --bg-warm-subtle: #f8efe8;
+  /* Delicate sand container */
+  --bg-dark-editorial: #151413;
+  /* Warm espresso charcoal (NOT pitch black) */
 
-  --text-main: #1c1917;         /* Deep espresso black */
-  --text-muted: #6e635b;        /* Warm stone gray */
-  --text-subtle: #9c9288;       /* Delicate caption taupe */
-  --text-light: #fdfbf7;        /* Pure warm white */
+  --text-main: #1c1917;
+  /* Deep espresso black */
+  --text-muted: #6e635b;
+  /* Warm stone gray */
+  --text-subtle: #9c9288;
+  /* Delicate caption taupe */
+  --text-light: #fdfbf7;
+  /* Pure warm white */
 
-  --accent-burgundy: #400813;   /* Deep luxury wine matching hero reference */
-  --kaira-burgundy: #400813;    /* Exact button wine */
-  --kaira-dark-wine: #30050e;   /* Darker hover wine */
-  --kaira-gold-accent: #9b784a; /* Champagne gold accent */
-  --accent-brass: #b89758;      /* Understated champagne brass */
-  --border-subtle: #ede5dc;     /* Whisper-thin divider */
-  --border-medium: #dfd6cb;     /* Soft outline */
+  --accent-burgundy: #400813;
+  /* Deep luxury wine matching hero reference */
+  --kaira-burgundy: #400813;
+  /* Exact button wine */
+  --kaira-dark-wine: #30050e;
+  /* Darker hover wine */
+  --kaira-gold-accent: #9b784a;
+  /* Champagne gold accent */
+  --accent-brass: #b89758;
+  /* Understated champagne brass */
+  --border-subtle: #ede5dc;
+  /* Whisper-thin divider */
+  --border-medium: #dfd6cb;
+  /* Soft outline */
 
   /* Legacy aliases for safe fallback */
   --primary-color: #400813;
@@ -65,6 +81,7 @@ div[id] {
 }
 
 @media (max-width: 767.98px) {
+
   section[id],
   div[id] {
     scroll-margin-top: 76px;
@@ -97,6 +114,7 @@ div[id] {
 .hover-opacity {
   transition: opacity 0.3s ease;
 }
+
 .hover-opacity:hover {
   opacity: 0.65;
 }
@@ -112,7 +130,10 @@ a.hover-text-primary:hover {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
-.filter-tabs-wrapper::-webkit-scrollbar { display: none; }
+
+.filter-tabs-wrapper::-webkit-scrollbar {
+  display: none;
+}
 
 .filter-tab {
   font-family: var(--font-sans);
@@ -153,7 +174,8 @@ a.hover-text-primary:hover {
 .product-image-wrapper {
   position: relative;
   aspect-ratio: 1 / 1;
-  background-color: var(--card-bg); /* Soft cream sand backdrop */
+  background-color: var(--card-bg);
+  /* Soft cream sand backdrop */
   border-radius: 4px;
   overflow: hidden;
   margin-bottom: 1.25rem;
@@ -175,7 +197,8 @@ a.hover-text-primary:hover {
 .quick-view-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(28, 28, 25, 0.15); /* Delicate dark veil */
+  background: rgba(28, 28, 25, 0.15);
+  /* Delicate dark veil */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -238,7 +261,8 @@ a.hover-text-primary:hover {
 }
 
 .product-card-premium:hover .product-title-premium {
-  color: #84523d; /* Elegant rust tone transition */
+  color: #84523d;
+  /* Elegant rust tone transition */
 }
 
 .product-price-premium {
@@ -314,7 +338,8 @@ a.hover-text-primary:hover {
 
 .campaign-copy-wrapper {
   height: 520px;
-  background-color: var(--footer-bg); /* Soft champagne backdrop */
+  background-color: var(--footer-bg);
+  /* Soft champagne backdrop */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -322,9 +347,12 @@ a.hover-text-primary:hover {
 }
 
 @media (max-width: 991.98px) {
-  .campaign-image-wrapper, .campaign-copy-wrapper {
+
+  .campaign-image-wrapper,
+  .campaign-copy-wrapper {
     height: 400px;
   }
+
   .campaign-copy-wrapper {
     padding: 2.5rem 2rem;
   }
@@ -459,6 +487,7 @@ a.hover-text-primary:hover {
   pointer-events: none;
   transition: opacity 0.4s ease;
 }
+
 .cart-drawer-overlay.open {
   opacity: 1;
   pointer-events: auto;
@@ -479,6 +508,7 @@ a.hover-text-primary:hover {
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
+
 .cart-drawer.open {
   transform: translateX(0);
 }
@@ -490,6 +520,7 @@ a.hover-text-primary:hover {
   justify-content: space-between;
   align-items: center;
 }
+
 .cart-drawer-body {
   flex-grow: 1;
   overflow-y: auto;
@@ -498,6 +529,7 @@ a.hover-text-primary:hover {
   flex-direction: column;
   gap: 1.5rem;
 }
+
 .cart-drawer-footer {
   padding: 2rem;
   border-top: 1px solid var(--outline-variant);
@@ -522,6 +554,7 @@ a.hover-text-primary:hover {
   align-items: center;
   overflow: hidden;
 }
+
 .cart-item-image img {
   width: 80%;
   height: 80%;
@@ -537,6 +570,7 @@ a.hover-text-primary:hover {
   background-color: #fff;
   height: 28px;
 }
+
 .quantity-control button {
   border: none;
   background: transparent;
@@ -549,6 +583,7 @@ a.hover-text-primary:hover {
   justify-content: center;
   outline: none;
 }
+
 .quantity-control span {
   width: 32px;
   text-align: center;
@@ -577,6 +612,7 @@ a.hover-text-primary:hover {
   margin-bottom: 2.5rem;
   transition: color 0.3s ease;
 }
+
 .breadcrumb-back:hover {
   color: #84523d;
 }
@@ -591,6 +627,7 @@ a.hover-text-primary:hover {
   overflow: hidden;
   margin-bottom: 1rem;
 }
+
 .detail-gallery-main img {
   width: 85%;
   height: 85%;
@@ -602,6 +639,7 @@ a.hover-text-primary:hover {
   display: flex;
   gap: 12px;
 }
+
 .detail-gallery-thumb {
   width: 72px;
   height: 72px;
@@ -615,9 +653,11 @@ a.hover-text-primary:hover {
   overflow: hidden;
   transition: border-color 0.3s ease;
 }
+
 .detail-gallery-thumb.active {
   border-color: var(--on-surface);
 }
+
 .detail-gallery-thumb img {
   width: 80%;
   height: 80%;
@@ -637,6 +677,7 @@ a.hover-text-primary:hover {
   transition: all 0.3s ease;
   border-radius: 2px;
 }
+
 .size-selector-btn.active {
   border-color: var(--on-surface);
   background-color: var(--on-surface);
@@ -648,9 +689,11 @@ a.hover-text-primary:hover {
   border-top: 1px solid var(--outline-variant);
   margin-top: 2rem;
 }
+
 .detail-accordion-item {
   border-bottom: 1px solid var(--outline-variant);
 }
+
 .detail-accordion-trigger {
   width: 100%;
   display: flex;
@@ -672,7 +715,8 @@ a.hover-text-primary:hover {
   position: absolute;
   top: -6px;
   right: -8px;
-  background-color: #84523d; /* Golden-rust accent */
+  background-color: #84523d;
+  /* Golden-rust accent */
   color: #fff;
   font-family: var(--font-sans);
   font-size: 9px;
@@ -694,7 +738,8 @@ a.hover-text-primary:hover {
   right: 0;
   z-index: 1050;
   transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
-  background: rgba(251, 249, 246, 0.98); /* Solid off-white sand for mobile visibility */
+  background: rgba(251, 249, 246, 0.98);
+  /* Solid off-white sand for mobile visibility */
   box-shadow: 0 1px 16px rgba(0, 0, 0, 0.06);
   backdrop-filter: blur(12px);
 }
@@ -718,6 +763,7 @@ a.hover-text-primary:hover {
 .kaira-header-nav-link {
   opacity: 0.85;
 }
+
 .kaira-header-nav-link:hover {
   opacity: 1;
 }
@@ -729,7 +775,7 @@ a.hover-text-primary:hover {
     box-shadow: none;
     backdrop-filter: none;
   }
-  
+
   .kaira-header-grid {
     padding: 22px 0;
   }
@@ -738,7 +784,8 @@ a.hover-text-primary:hover {
   .kaira-header-nav-link,
   .kaira-header-icon,
   .kaira-header-hamburger {
-    color: #ffffff !important; /* White color for contrast against dark hero banner */
+    color: #ffffff !important;
+    /* White color for contrast against dark hero banner */
   }
 
   /* Scrolled solid state for desktop */
@@ -764,7 +811,8 @@ a.hover-text-primary:hover {
 
 /* Luxury Star Ratings */
 .perfume-stars {
-  color: #e5a632; /* Golden amber stars */
+  color: #e5a632;
+  /* Golden amber stars */
   display: flex;
   gap: 3px;
   font-size: 13px;
@@ -1128,15 +1176,20 @@ a.hover-text-primary:hover {
   .luxury-card-media {
     aspect-ratio: 1 / 1.1;
   }
+
   .luxury-hover-actions {
-    display: none; /* Mobile users use bottom CTA & direct tap */
+    display: none;
+    /* Mobile users use bottom CTA & direct tap */
   }
+
   .luxury-card-content {
     padding: 14px 14px 16px;
   }
+
   .luxury-card-title {
     font-size: 15px;
   }
+
   .luxury-add-cart-btn {
     padding: 9px 12px;
     font-size: 11px;
@@ -1153,6 +1206,7 @@ a.hover-text-primary:hover {
   padding-bottom: 10px;
   flex-wrap: wrap;
 }
+
 .perfume-tab-trigger {
   font-family: var(--font-sans);
   font-size: 13px;
@@ -1167,10 +1221,12 @@ a.hover-text-primary:hover {
   transition: color 0.3s ease;
   cursor: pointer;
 }
+
 .perfume-tab-trigger:hover,
 .perfume-tab-trigger.active {
   color: var(--primary-color);
 }
+
 .perfume-tab-trigger.active::after {
   content: "";
   position: absolute;
@@ -1187,6 +1243,7 @@ a.hover-text-primary:hover {
   padding: 100px 0;
   color: #fff;
 }
+
 .video-showcase-player-box {
   position: relative;
   width: 100%;
@@ -1194,14 +1251,16 @@ a.hover-text-primary:hover {
   margin: 0 auto;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   aspect-ratio: 16/9;
 }
+
 .video-showcase-player-box video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .video-overlay-play-cover {
   position: absolute;
   top: 0;
@@ -1215,23 +1274,27 @@ a.hover-text-primary:hover {
   cursor: pointer;
   transition: background 0.4s ease;
 }
+
 .video-overlay-play-cover:hover {
-  background: rgba(0,0,0,0.25);
+  background: rgba(0, 0, 0, 0.25);
 }
+
 .video-play-btn-ring {
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
+
 .video-overlay-play-cover:hover .video-play-btn-ring {
   transform: scale(1.08);
 }
+
 .video-play-btn-ring span {
   font-size: 32px;
   color: var(--primary-color);
@@ -1243,6 +1306,7 @@ a.hover-text-primary:hover {
   text-align: center;
   margin-bottom: 3.5rem;
 }
+
 .perfume-section-label {
   font-family: var(--font-sans);
   font-size: 11px;
@@ -1253,6 +1317,7 @@ a.hover-text-primary:hover {
   display: block;
   margin-bottom: 8px;
 }
+
 .perfume-section-title {
   font-family: var(--font-serif);
   font-size: clamp(24px, 4vw, 36px);
@@ -1262,6 +1327,7 @@ a.hover-text-primary:hover {
   display: inline-block;
   padding-bottom: 12px;
 }
+
 .perfume-section-title::after {
   content: "";
   position: absolute;
@@ -1275,13 +1341,14 @@ a.hover-text-primary:hover {
 
 /* Highlights Banner Panel style */
 .highlights-banner {
-  background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url("https://wpthemes.themehunk.com/perfume-mania/wp-content/uploads/sites/298/2024/04/img2.png") center center no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("https://wpthemes.themehunk.com/perfume-mania/wp-content/uploads/sites/298/2024/04/img2.png") center center no-repeat;
   background-size: cover;
   padding: 110px 0;
   color: #fff;
   text-align: center;
   background-attachment: scroll;
 }
+
 @media (min-width: 992px) {
   .highlights-banner {
     background-attachment: fixed;
@@ -1292,9 +1359,11 @@ a.hover-text-primary:hover {
   padding: 20px;
   transition: transform 0.3s ease;
 }
+
 .highlight-col:hover {
   transform: translateY(-5px);
 }
+
 .highlight-num {
   font-family: var(--font-serif);
   font-size: 28px;
@@ -1303,12 +1372,14 @@ a.hover-text-primary:hover {
   margin-bottom: 12px;
   font-weight: 700;
 }
+
 .highlight-title {
   font-family: var(--font-serif);
   font-size: 18px;
   margin-bottom: 10px;
   font-weight: 400;
 }
+
 .highlight-desc {
   font-family: var(--font-sans);
   font-size: 13px;
@@ -1324,9 +1395,10 @@ a.hover-text-primary:hover {
   border-radius: 4px;
   padding: 30px;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
   height: 100%;
 }
+
 .testimonial-avatar {
   width: 70px;
   height: 70px;
@@ -1335,6 +1407,7 @@ a.hover-text-primary:hover {
   margin: 0 auto 15px auto;
   border: 2px solid var(--primary-color);
 }
+
 .testimonial-quote {
   font-family: var(--font-sans);
   font-style: italic;
@@ -1343,12 +1416,14 @@ a.hover-text-primary:hover {
   line-height: 1.7;
   margin-bottom: 15px;
 }
+
 .testimonial-user {
   font-family: var(--font-serif);
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 2px;
 }
+
 .testimonial-role {
   font-family: var(--font-sans);
   font-size: 11px;
@@ -1367,21 +1442,25 @@ a.hover-text-primary:hover {
   transition: all 0.4s ease;
   border: 1px solid var(--outline-variant);
 }
+
 .social-gallery-item {
   position: relative;
   overflow: hidden;
   cursor: pointer;
 }
+
 .social-gallery-item:hover .social-gallery-img {
   transform: scale(1.04);
 }
+
 .social-gallery-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(179,36,36,0.7); /* Burgundy overlay */
+  background: rgba(179, 36, 36, 0.7);
+  /* Burgundy overlay */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1389,9 +1468,11 @@ a.hover-text-primary:hover {
   transition: opacity 0.3s ease;
   border-radius: 4px;
 }
+
 .social-gallery-item:hover .social-gallery-overlay {
   opacity: 1;
 }
+
 .social-gallery-overlay span {
   color: #fff;
   font-size: 30px;
@@ -1410,6 +1491,7 @@ a.hover-text-primary:hover {
   gap: 24px;
   flex-direction: column;
 }
+
 @media (min-width: 768px) {
   .asymmetric-grid-container {
     flex-direction: row;
@@ -1430,16 +1512,18 @@ a.hover-text-primary:hover {
 
 .asymmetric-card {
   position: relative;
-  border-radius: 12px; /* Smooth rounded corners matching the screenshot */
+  border-radius: 12px;
+  /* Smooth rounded corners matching the screenshot */
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   cursor: pointer;
   width: 100%;
 }
+
 .asymmetric-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 .asymmetric-card img {
@@ -1449,6 +1533,7 @@ a.hover-text-primary:hover {
   display: block;
   transition: transform 0.6s ease;
 }
+
 .asymmetric-card:hover img {
   transform: scale(1.03);
 }
@@ -1457,6 +1542,7 @@ a.hover-text-primary:hover {
   height: 100%;
   min-height: 380px;
 }
+
 @media (min-width: 768px) {
   .asymmetric-card-tall {
     min-height: 600px;
@@ -1467,6 +1553,7 @@ a.hover-text-primary:hover {
   height: 100%;
   min-height: 240px;
 }
+
 @media (min-width: 768px) {
   .asymmetric-card-short {
     height: 288px;
@@ -1476,7 +1563,7 @@ a.hover-text-primary:hover {
 .asymmetric-overlay-content {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -1491,6 +1578,7 @@ a.hover-text-primary:hover {
   margin-bottom: 12px;
   transition: width 0.3s ease;
 }
+
 .asymmetric-card:hover .asymmetric-overlay-line {
   width: 90px;
 }
@@ -1510,13 +1598,14 @@ a.hover-text-primary:hover {
   text-align: center;
   margin-bottom: 8px;
 }
+
 .perfume-pill-badge {
   display: inline-block;
   font-family: var(--font-sans);
   font-size: 11px;
   font-weight: 600;
   color: var(--on-surface-variant);
-  border: 1px solid rgba(28,28,25,0.2);
+  border: 1px solid rgba(28, 28, 25, 0.2);
   border-radius: 100px;
   padding: 6px 22px;
   text-transform: uppercase;
@@ -1605,7 +1694,7 @@ a.hover-text-primary:hover {
   background-color: #1c1a19;
   border-color: #1c1a19;
   color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .luxury-rating-inline {
@@ -1620,8 +1709,8 @@ a.hover-text-primary:hover {
   color: #ffffff;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .campaign-visual-wrapper {
@@ -1662,7 +1751,7 @@ a.hover-text-primary:hover {
   font-family: var(--font-sans);
   font-size: 11px;
   letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
 }
 
@@ -1678,7 +1767,7 @@ a.hover-text-primary:hover {
   gap: 12px;
   font-family: var(--font-sans);
   font-size: 13px;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .perk-icon {
@@ -1747,14 +1836,14 @@ a.hover-text-primary:hover {
   background-color: #1f1c1a;
   color: #e7c67c;
   border-color: #1f1c1a;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .notes-explorer-box {
   background-color: #ffffff;
   border-radius: 12px;
   border: 1px solid #e5dfd5;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
 .notes-flacon-wrapper {
@@ -1762,7 +1851,7 @@ a.hover-text-primary:hover {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
   border: 1px solid #ebe5dc;
 }
 
@@ -1781,7 +1870,7 @@ a.hover-text-primary:hover {
   position: absolute;
   top: 12px;
   right: 12px;
-  background: rgba(28,26,25,0.85);
+  background: rgba(28, 26, 25, 0.85);
   backdrop-filter: blur(6px);
   color: #e7c67c;
   font-family: var(--font-sans);
@@ -1915,7 +2004,7 @@ a.hover-text-primary:hover {
 
 .btn-quick-add:hover {
   background-color: #3a3430;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 .btn-quick-add.secondary {
@@ -1933,7 +2022,7 @@ a.hover-text-primary:hover {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
   border: 1px solid #ebe5dc;
   background-color: #ffffff;
 }
@@ -1986,17 +2075,21 @@ a.hover-text-primary:hover {
   .detail-accords-strip {
     gap: 6px;
   }
+
   .accord-chip {
     padding: 7px 5px;
     gap: 5px;
   }
+
   .accord-chip .material-symbols-outlined {
     font-size: 15px !important;
   }
+
   .accord-chip strong {
     font-size: 9.5px !important;
     line-height: 1.15;
   }
+
   .accord-chip small {
     font-size: 7.5px !important;
     letter-spacing: 0.03em;
@@ -2094,7 +2187,7 @@ a.hover-text-primary:hover {
 .detail-size-btn.active {
   border-color: #1c1a19;
   background-color: #faf8f5;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
 .size-btn-row {
@@ -2517,7 +2610,7 @@ a.hover-text-primary:hover {
 .velora-hero-scrim {
   position: absolute;
   inset: 0;
-  background: 
+  background:
     linear-gradient(to right, rgba(9, 9, 11, 0.95) 0%, rgba(9, 9, 11, 0.75) 45%, rgba(9, 9, 11, 0.2) 75%, transparent 100%),
     linear-gradient(to top, rgba(9, 9, 11, 0.8) 0%, transparent 40%);
   z-index: 2;
@@ -2743,6 +2836,7 @@ a.hover-text-primary:hover {
     scroll-snap-type: x mandatory;
     align-items: stretch;
   }
+
   .kaira-family-item {
     flex: 0 0 160px;
     scroll-snap-align: start;
@@ -2896,17 +2990,20 @@ a.hover-text-primary:hover {
     max-width: 1200px !important;
     margin: 0 auto !important;
   }
+
   .kaira-human-card {
     max-width: 275px;
     width: 100%;
     margin: 0 auto;
   }
+
   .kaira-human-stage {
     aspect-ratio: unset !important;
     height: 175px !important;
     max-height: 175px !important;
     padding: 8px 10px !important;
   }
+
   .flacon-holder {
     width: 100% !important;
     height: 100% !important;
@@ -2914,46 +3011,58 @@ a.hover-text-primary:hover {
     align-items: center !important;
     justify-content: center !important;
   }
+
   .flacon-img {
     max-height: 140px !important;
     max-width: 82% !important;
     object-fit: contain !important;
   }
+
   .kaira-human-body {
     padding: 10px 12px 12px !important;
   }
-  .brand-tag, .category-tag {
+
+  .brand-tag,
+  .category-tag {
     font-size: 8px !important;
   }
+
   .product-title {
     font-size: 13.5px !important;
     margin-bottom: 2px !important;
     line-height: 1.3 !important;
     font-weight: 600 !important;
   }
+
   .product-notes {
     font-size: 10px !important;
     margin-bottom: 6px !important;
     line-height: 1.3 !important;
   }
+
   .kaira-card-pricing-row {
     margin-bottom: 5px !important;
   }
+
   .kaira-card-pricing-row .final-price {
     font-size: 14px !important;
   }
+
   .kaira-card-pricing-row .old-price {
     font-size: 10.5px !important;
   }
+
   .kaira-card-sizes-row {
     margin-bottom: 6px !important;
     gap: 4px !important;
   }
+
   .kaira-size-pill {
     padding: 3px 6px !important;
     font-size: 8.5px !important;
     height: 24px !important;
   }
+
   .add-bag-btn {
     padding: 6px 10px !important;
     font-size: 9px !important;
@@ -2969,17 +3078,20 @@ a.hover-text-primary:hover {
     max-width: 900px !important;
     margin: 0 auto !important;
   }
+
   .kaira-human-card {
     max-width: 275px;
     width: 100%;
     margin: 0 auto;
   }
+
   .kaira-human-stage {
     aspect-ratio: unset !important;
     height: 175px !important;
     max-height: 175px !important;
     padding: 8px 10px !important;
   }
+
   .flacon-holder {
     width: 100% !important;
     height: 100% !important;
@@ -2987,44 +3099,56 @@ a.hover-text-primary:hover {
     align-items: center !important;
     justify-content: center !important;
   }
+
   .flacon-img {
     max-height: 140px !important;
     max-width: 82% !important;
     object-fit: contain !important;
   }
+
   .kaira-human-body {
     padding: 10px 12px 12px !important;
   }
-  .brand-tag, .category-tag {
+
+  .brand-tag,
+  .category-tag {
     font-size: 8px !important;
   }
+
   .product-title {
     font-size: 13.5px !important;
     margin-bottom: 2px !important;
     line-height: 1.3 !important;
   }
+
   .product-notes {
     font-size: 10px !important;
     margin-bottom: 6px !important;
   }
+
   .kaira-card-pricing-row {
     margin-bottom: 5px !important;
   }
+
   .kaira-card-pricing-row .final-price {
     font-size: 14px !important;
   }
+
   .kaira-card-pricing-row .old-price {
     font-size: 10.5px !important;
   }
+
   .kaira-card-sizes-row {
     margin-bottom: 6px !important;
     gap: 4px !important;
   }
+
   .kaira-size-pill {
     padding: 3px 6px !important;
     font-size: 8.5px !important;
     height: 24px !important;
   }
+
   .add-bag-btn {
     padding: 6px 10px !important;
     font-size: 9px !important;
@@ -3044,46 +3168,58 @@ a.hover-text-primary:hover {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
+
   .kaira-human-body {
     padding: 10px 8px 12px;
   }
+
   .product-title {
     font-size: 13px !important;
     margin-bottom: 2px !important;
   }
+
   .product-notes {
     font-size: 10px !important;
     margin-bottom: 8px !important;
   }
+
   .kaira-card-pricing-row {
     margin-bottom: 6px !important;
     gap: 5px !important;
   }
+
   .kaira-card-pricing-row .final-price {
     font-size: 14px !important;
   }
+
   .kaira-card-pricing-row .old-price {
     font-size: 10px !important;
   }
+
   .kaira-card-sizes-row {
     gap: 4px !important;
     margin-bottom: 8px !important;
   }
+
   .kaira-size-pill {
     padding: 3px 2px !important;
     font-size: 8.5px !important;
   }
+
   .size-price-row {
     padding-top: 6px !important;
     margin-bottom: 8px !important;
   }
+
   .size-pill {
     font-size: 8px !important;
     padding: 2px 4px !important;
   }
+
   .price-wrap .final-price {
     font-size: 13px !important;
   }
+
   .add-bag-btn {
     padding: 7px 6px !important;
     font-size: 8.5px !important;
@@ -3950,6 +4086,7 @@ a.hover-text-primary:hover {
     scroll-snap-type: x mandatory;
     align-items: stretch;
   }
+
   .kaira-story-rail-col {
     flex: 0 0 calc(100vw - 56px);
     max-width: 340px;
@@ -4389,10 +4526,12 @@ a.hover-text-primary:hover {
   .kaira-founder-ref-card {
     padding: 24px 18px;
   }
+
   .kaira-founder-ref-info {
     padding-left: 0;
     margin-top: 10px;
   }
+
   .kaira-founder-ref-name {
     font-size: 28px;
     margin-bottom: 14px;
@@ -4535,6 +4674,7 @@ a.hover-text-primary:hover {
     transform: translate(-50%, -50%) scale(0.3);
     opacity: 1;
   }
+
   100% {
     transform: translate(-50%, -50%) scale(2.4);
     opacity: 0;
@@ -4613,6 +4753,7 @@ a.hover-text-primary:hover {
     transform: scale(0.6);
     opacity: 1;
   }
+
   100% {
     transform: scale(2.6);
     opacity: 0;
@@ -4692,6 +4833,7 @@ a.hover-text-primary:hover {
   .kaira-pinpoint-card {
     flex-direction: column;
   }
+
   .kaira-pinpoint-map-pane {
     height: 260px;
     min-height: 260px;
@@ -4699,6 +4841,7 @@ a.hover-text-primary:hover {
     position: relative;
     overflow: hidden;
   }
+
   .kaira-pinpoint-info-pane {
     width: 100%;
     padding: 24px 20px;
@@ -4946,6 +5089,7 @@ a.hover-text-primary:hover {
     border-radius: 18px;
     padding: 28px 20px 22px;
   }
+
   .kaira-subscribe-pill-box {
     max-width: 100%;
   }
@@ -5301,7 +5445,8 @@ a.hover-text-primary:hover {
   justify-content: space-between;
 }
 
-.kaira-nav-left, .kaira-nav-right {
+.kaira-nav-left,
+.kaira-nav-right {
   flex: 1;
 }
 
@@ -5490,7 +5635,7 @@ a.hover-text-primary:hover {
 .kaira-unisex-hero-scrim {
   position: absolute;
   inset: 0;
-  background: 
+  background:
     linear-gradient(to right, rgba(16, 14, 13, 0.94) 0%, rgba(16, 14, 13, 0.78) 46%, rgba(16, 14, 13, 0.22) 78%, transparent 100%),
     linear-gradient(to top, rgba(16, 14, 13, 0.88) 0%, transparent 28%);
   z-index: 2;
@@ -6068,24 +6213,20 @@ a.hover-text-primary:hover {
 .kaira-hero-backdrop-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(251, 245, 239, 0.96) 0%,
-    rgba(251, 245, 239, 0.9) 36%,
-    rgba(251, 245, 239, 0.45) 54%,
-    rgba(251, 245, 239, 0) 75%
-  );
+  background: linear-gradient(90deg,
+      rgba(251, 245, 239, 0.96) 0%,
+      rgba(251, 245, 239, 0.9) 36%,
+      rgba(251, 245, 239, 0.45) 54%,
+      rgba(251, 245, 239, 0) 75%);
   pointer-events: none;
 }
 
 @media (max-width: 991px) {
   .kaira-hero-backdrop-overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(251, 245, 239, 0.96) 0%,
-      rgba(251, 245, 239, 0.92) 50%,
-      rgba(251, 245, 239, 0.5) 100%
-    );
+    background: linear-gradient(180deg,
+        rgba(251, 245, 239, 0.96) 0%,
+        rgba(251, 245, 239, 0.92) 50%,
+        rgba(251, 245, 239, 0.5) 100%);
   }
 }
 
@@ -6216,25 +6357,30 @@ a.hover-text-primary:hover {
    Eliminates excessive vertical scrolling, giant gaps, and oversized components
    ========================================================================== */
 @media (max-width: 767.98px) {
+
   /* 1. Header & Top Bar */
   .kaira-ref-top-bar {
     padding: 6px 0 !important;
     font-size: 9.5px !important;
   }
+
   .kaira-ref-navbar {
     padding: 8px 0 !important;
   }
+
   .kaira-ref-navbar-grid {
     display: grid !important;
     grid-template-columns: 1fr auto 1fr !important;
     align-items: center !important;
     gap: 8px !important;
   }
+
   .kaira-mobile-toggle-col {
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
   }
+
   .mobile-toggle-btn {
     width: 38px !important;
     height: 38px !important;
@@ -6243,20 +6389,24 @@ a.hover-text-primary:hover {
     justify-content: flex-start !important;
     color: var(--kaira-text-main, #1c1917) !important;
   }
+
   .kaira-nav-center {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     text-align: center !important;
   }
+
   .kaira-logo-title {
     font-size: 22px !important;
     letter-spacing: 0.1em !important;
   }
+
   .kaira-logo-subtitle {
     font-size: 8px !important;
     letter-spacing: 0.28em !important;
   }
+
   .kaira-nav-right {
     display: flex !important;
     align-items: center !important;
@@ -6268,25 +6418,30 @@ a.hover-text-primary:hover {
   .kaira-bespoke-hero {
     min-height: auto !important;
   }
+
   .min-vh-hero {
     min-height: auto !important;
-    padding: 34px 0 48px !important;
+    padding: 100px 0 60px !important;
   }
+
   .kaira-hero-headline {
     font-size: 28px !important;
     line-height: 1.18 !important;
     margin-bottom: 12px !important;
   }
+
   .kaira-hero-description {
     font-size: 13px !important;
     line-height: 1.55 !important;
     margin-bottom: 20px !important;
   }
+
   .kaira-hero-actions {
     margin-bottom: 20px !important;
     display: flex !important;
     justify-content: flex-start !important;
   }
+
   .kaira-hero-btn-primary {
     width: auto !important;
     max-width: 240px !important;
@@ -6296,19 +6451,23 @@ a.hover-text-primary:hover {
     letter-spacing: 0.14em !important;
     border-radius: 2px !important;
   }
+
   .kaira-hero-trust-row {
     padding-top: 16px !important;
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 10px 8px !important;
   }
+
   .kaira-trust-item {
     gap: 6px !important;
   }
+
   .kaira-trust-icon {
     width: 13px !important;
     height: 13px !important;
   }
+
   .kaira-trust-label {
     font-size: 8.5px !important;
     line-height: 1.25 !important;
@@ -6318,14 +6477,17 @@ a.hover-text-primary:hover {
   .kaira-signature-section {
     padding: 38px 0 34px !important;
   }
+
   .kaira-signature-eyebrow {
     font-size: 9.5px !important;
     margin-bottom: 4px !important;
   }
+
   .kaira-signature-title {
     font-size: 24px !important;
     margin-bottom: 8px !important;
   }
+
   .kaira-signature-divider {
     margin: 0 auto 20px !important;
     max-width: 160px !important;
@@ -6335,10 +6497,12 @@ a.hover-text-primary:hover {
   .velora-scent-families-section {
     padding: 38px 0 34px !important;
   }
+
   .velora-section-eyebrow {
     font-size: 9.5px !important;
     margin-bottom: 4px !important;
   }
+
   .velora-section-title {
     font-size: 24px !important;
   }
@@ -6347,19 +6511,23 @@ a.hover-text-primary:hover {
   .kaira-human-classics-section {
     padding: 40px 0 36px !important;
   }
+
   .kaira-editorial-label {
     font-size: 9.5px !important;
     margin-bottom: 4px !important;
   }
+
   .kaira-editorial-heading {
     font-size: 24px !important;
     margin-bottom: 6px !important;
   }
+
   .kaira-editorial-subheading {
     font-size: 12px !important;
     line-height: 1.5 !important;
     margin-bottom: 16px !important;
   }
+
   .kaira-card-mobile-hidden {
     display: none !important;
   }
@@ -6368,18 +6536,22 @@ a.hover-text-primary:hover {
   .kaira-notes-section {
     padding: 40px 0 36px !important;
   }
+
   .kaira-notes-eyebrow {
     font-size: 9.5px !important;
     margin-bottom: 4px !important;
   }
+
   .kaira-notes-title {
     font-size: 24px !important;
     margin-bottom: 6px !important;
   }
+
   .kaira-notes-subtitle {
     font-size: 12px !important;
     line-height: 1.5 !important;
   }
+
   .kaira-notes-pill-tab {
     padding: 7px 14px !important;
     font-size: 10px !important;
@@ -6389,14 +6561,17 @@ a.hover-text-primary:hover {
   .kaira-stories-section {
     padding: 40px 0 36px !important;
   }
+
   .kaira-stories-eyebrow {
     font-size: 9.5px !important;
     margin-bottom: 4px !important;
   }
+
   .kaira-stories-title {
     font-size: 24px !important;
     margin-bottom: 6px !important;
   }
+
   .kaira-stories-subtitle {
     font-size: 12px !important;
     line-height: 1.5 !important;
@@ -6406,24 +6581,29 @@ a.hover-text-primary:hover {
   .velora-join-section {
     padding: 34px 0 30px !important;
   }
+
   .velora-join-title {
     font-size: 22px !important;
     margin-bottom: 6px !important;
   }
+
   .velora-join-sub {
     font-size: 12px !important;
     line-height: 1.5 !important;
     margin-bottom: 16px !important;
   }
+
   .velora-join-form {
     flex-direction: column !important;
     gap: 8px !important;
     width: 100% !important;
   }
+
   .velora-join-input {
     width: 100% !important;
     height: 44px !important;
   }
+
   .velora-join-btn {
     width: 100% !important;
     height: 44px !important;
@@ -6440,9 +6620,11 @@ a.hover-text-primary:hover {
     padding-top: 10px !important;
     padding-bottom: 24px !important;
   }
+
   .breadcrumb-back {
     font-size: 11px !important;
   }
+
   .luxury-detail-stage {
     aspect-ratio: auto !important;
     height: 210px !important;
@@ -6455,63 +6637,78 @@ a.hover-text-primary:hover {
     justify-content: center !important;
     background: radial-gradient(circle at center, #ffffff 40%, #f7f4ef 100%) !important;
   }
+
   .detail-hero-img {
     max-height: 180px !important;
     width: auto !important;
     object-fit: contain !important;
   }
+
   .detail-image-badge-pill {
     top: 10px !important;
     left: 10px !important;
     padding: 3px 8px !important;
     font-size: 8.5px !important;
   }
+
   .detail-accords-strip {
     margin-top: 6px !important;
     gap: 4px !important;
   }
+
   .accord-chip {
     padding: 4px 5px !important;
     gap: 4px !important;
     border-radius: 4px !important;
   }
+
   .accord-chip .material-symbols-outlined {
     font-size: 13px !important;
   }
+
   .accord-chip strong {
     font-size: 8.5px !important;
     line-height: 1.1;
   }
+
   .accord-chip small {
     font-size: 6.5px !important;
     letter-spacing: 0.02em;
   }
+
   .detail-brand-tag {
     font-size: 8.5px !important;
   }
+
   .detail-category-badge {
     font-size: 8px !important;
     padding: 2px 7px !important;
   }
+
   .detail-main-title {
     font-size: 19px !important;
     line-height: 1.15 !important;
     margin-bottom: 2px !important;
   }
+
   .detail-pricing-box {
     margin-bottom: 8px !important;
     gap: 8px !important;
   }
+
   .detail-price-main {
     font-size: 20px !important;
   }
+
   .detail-price-compare {
     font-size: 13.5px !important;
   }
+
   .detail-savings-badge {
     font-size: 8px !important;
     padding: 2px 6px !important;
   }
+
   .detail-narrative {
     font-size: 11px !important;
     line-height: 1.45 !important;
@@ -6521,170 +6718,213 @@ a.hover-text-primary:hover {
     -webkit-box-orient: vertical !important;
     overflow: hidden !important;
   }
+
   .detail-narrative.expanded {
     -webkit-line-clamp: unset !important;
     overflow: visible !important;
   }
+
   .detail-size-section {
     margin-bottom: 10px !important;
   }
+
   .detail-size-btn {
     padding: 7px 10px !important;
     border-radius: 4px !important;
     min-height: 38px !important;
     justify-content: center !important;
   }
+
   .size-btn-row {
     display: flex !important;
     flex-direction: row !important;
     align-items: baseline !important;
     gap: 5px !important;
   }
+
   .size-volume {
     font-size: 11px !important;
     font-weight: 700 !important;
   }
+
   .size-cost {
     font-size: 10.5px !important;
     font-weight: 700 !important;
   }
+
   .size-mrp {
     font-size: 8.5px !important;
   }
+
   .size-badge-value {
     font-size: 7px !important;
     padding: 1px 4px !important;
     top: -7px !important;
     right: 5px !important;
   }
+
   .detail-size-guide-hint {
     font-size: 8.5px !important;
   }
+
   .detail-qty-control {
     width: 68px !important;
     height: 36px !important;
   }
+
   .detail-qty-control button {
     width: 22px !important;
     font-size: 13px !important;
   }
+
   .detail-qty-control span {
     font-size: 11px !important;
   }
+
   .detail-add-btn {
     height: 36px !important;
     padding: 0 10px !important;
     font-size: 9.5px !important;
     letter-spacing: 0.08em !important;
   }
+
   .detail-wishlist-toggle {
     width: 36px !important;
     height: 36px !important;
     flex-shrink: 0 !important;
   }
+
   .olfactory-pyramid-card {
     padding: 10px 12px !important;
     margin-bottom: 10px !important;
     border-radius: 6px !important;
   }
+
   .pyramid-header {
     margin-bottom: 8px !important;
     padding-bottom: 6px !important;
     gap: 4px !important;
   }
+
   .pyramid-title {
     font-size: 12px !important;
   }
+
   .pyramid-tier {
     margin-bottom: 6px !important;
   }
+
   .pyramid-tier-label {
     margin-bottom: 2px !important;
   }
+
   .tier-badge {
     font-size: 7.5px !important;
   }
+
   .tier-timing {
     font-size: 7.5px !important;
   }
+
   .pyramid-tags {
     gap: 3px !important;
   }
+
   .note-pill {
     font-size: 8.5px !important;
     padding: 1px 6px !important;
   }
+
   .detail-accordion {
     margin-top: 10px !important;
   }
+
   .detail-accordion-trigger {
     padding: 8px 0 !important;
     font-size: 9.5px !important;
   }
+
   .detail-accordion-body {
     font-size: 10px !important;
     line-height: 1.4 !important;
     padding-bottom: 6px !important;
   }
+
   .perfume-section-title {
     font-size: 18px !important;
   }
+
   .luxury-product-card {
     border-radius: 8px !important;
   }
+
   .luxury-badge-stack {
     top: 8px !important;
     left: 8px !important;
     max-width: calc(100% - 44px) !important;
   }
+
   .luxury-pill-badge {
     font-size: 8px !important;
     padding: 2px 6px !important;
     letter-spacing: 0.08em !important;
   }
+
   .luxury-wishlist-btn {
     top: 8px !important;
     right: 8px !important;
     width: 28px !important;
     height: 28px !important;
   }
+
   .luxury-wishlist-btn span {
     font-size: 15px !important;
   }
+
   .luxury-card-content {
     padding: 8px 8px 10px !important;
   }
+
   .luxury-card-meta {
     margin-bottom: 2px !important;
   }
+
   .luxury-meta-brand {
     font-size: 8px !important;
   }
+
   .luxury-meta-category {
     font-size: 7.5px !important;
   }
+
   .luxury-card-title {
     font-size: 12px !important;
     margin-bottom: 3px !important;
   }
+
   .luxury-card-pricing {
     margin-bottom: 6px !important;
     gap: 5px !important;
   }
+
   .luxury-price-current {
     font-size: 13.5px !important;
   }
+
   .luxury-price-original {
     font-size: 10px !important;
   }
+
   .luxury-size-pills-row {
     gap: 4px !important;
     margin-bottom: 6px !important;
   }
+
   .luxury-size-pill {
     padding: 3px 2px !important;
     font-size: 8.5px !important;
   }
+
   .luxury-add-cart-btn {
     padding: 6px 8px !important;
     font-size: 8.5px !important;
@@ -6696,22 +6936,22 @@ a.hover-text-primary:hover {
    GLOBAL UNIFIED LUXURY CONTAINER
    Ensures ALL sections share the EXACT same width, margins, and padding
    ========================================================================= */
-.kaira-ref-top-bar > .container-fluid,
-.kaira-ref-navbar > .container-fluid,
-.kaira-bespoke-hero > .container-fluid,
+.kaira-ref-top-bar>.container-fluid,
+.kaira-ref-navbar>.container-fluid,
+.kaira-bespoke-hero>.container-fluid,
 .kaira-hero-content-container,
-.kaira-signature-section > .container-fluid,
-.velora-scent-families-section > .container-fluid,
-.kaira-human-classics-section > .container-fluid,
-.kaira-notes-section > .container-fluid,
-.kaira-stories-section > .container-fluid,
-.kaira-founder-ref-section > .container-fluid,
-.kaira-pinpoint-section > .container-fluid,
-.kaira-standard-footer > .container-fluid,
-.kaira-products-page > .container-fluid,
+.kaira-signature-section>.container-fluid,
+.velora-scent-families-section>.container-fluid,
+.kaira-human-classics-section>.container-fluid,
+.kaira-notes-section>.container-fluid,
+.kaira-stories-section>.container-fluid,
+.kaira-founder-ref-section>.container-fluid,
+.kaira-pinpoint-section>.container-fluid,
+.kaira-standard-footer>.container-fluid,
+.kaira-products-page>.container-fluid,
 .product-detail-view .container,
 .product-detail-view .container-fluid,
-main > .container-fluid {
+main>.container-fluid {
   max-width: 1440px !important;
   margin-left: auto !important;
   margin-right: auto !important;
@@ -6721,22 +6961,23 @@ main > .container-fluid {
 }
 
 @media (max-width: 767.98px) {
-  .kaira-ref-top-bar > .container-fluid,
-  .kaira-ref-navbar > .container-fluid,
-  .kaira-bespoke-hero > .container-fluid,
+
+  .kaira-ref-top-bar>.container-fluid,
+  .kaira-ref-navbar>.container-fluid,
+  .kaira-bespoke-hero>.container-fluid,
   .kaira-hero-content-container,
-  .kaira-signature-section > .container-fluid,
-  .velora-scent-families-section > .container-fluid,
-  .kaira-human-classics-section > .container-fluid,
-  .kaira-notes-section > .container-fluid,
-  .kaira-stories-section > .container-fluid,
-  .kaira-founder-ref-section > .container-fluid,
-  .kaira-pinpoint-section > .container-fluid,
-  .kaira-standard-footer > .container-fluid,
-  .kaira-products-page > .container-fluid,
+  .kaira-signature-section>.container-fluid,
+  .velora-scent-families-section>.container-fluid,
+  .kaira-human-classics-section>.container-fluid,
+  .kaira-notes-section>.container-fluid,
+  .kaira-stories-section>.container-fluid,
+  .kaira-founder-ref-section>.container-fluid,
+  .kaira-pinpoint-section>.container-fluid,
+  .kaira-standard-footer>.container-fluid,
+  .kaira-products-page>.container-fluid,
   .product-detail-view .container,
   .product-detail-view .container-fluid,
-  main > .container-fluid {
+  main>.container-fluid {
     padding-left: 16px !important;
     padding-right: 16px !important;
   }
@@ -6854,7 +7095,3 @@ main > .container-fluid {
 .kaira-clear-filter-btn:hover {
   opacity: 0.7;
 }
-
-
-
-
