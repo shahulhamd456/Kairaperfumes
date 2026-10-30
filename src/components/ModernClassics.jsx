@@ -67,22 +67,21 @@ export default function ModernClassics({
           </div>
         </div>
 
-        {/* Strictly 1-Row Showcase:
-            - Desktop/Tablet (>= 768px): 4 items in 1 row (4 columns)
-            - Mobile (< 768px): 2 items in 1 row (2 columns), items 3 & 4 hidden on small screens */}
+        {/* 4 Products Showcase:
+            - Desktop/Tablet (>= 768px): 4 items in 1 line (4 columns)
+            - Mobile (< 768px): 4 items in 2 lines (2 columns x 2 rows) */}
         <div className="kaira-human-grid">
-          {homeProducts.map((product, index) => {
+          {homeProducts.map((product) => {
             const currentSize = selectedSizes[product.id] || '50ml';
             const currentPrice =
               product.sizes?.[currentSize]?.price || (currentSize === '30ml' ? '₹349' : '₹599');
             const originalPrice = product.sizes?.[currentSize]?.originalPrice;
             const isWishlisted = wishlist.some((w) => w.id === product.id);
-            const isMobileHidden = index >= 2; // Keeps exactly 1 row on mobile (2 columns)
 
             return (
               <div
                 key={product.id}
-                className={`kaira-human-card ${isMobileHidden ? 'd-none d-md-flex' : ''}`}
+                className="kaira-human-card"
                 onClick={() => onProductSelect(product)}
               >
                 {/* Visual Stage */}

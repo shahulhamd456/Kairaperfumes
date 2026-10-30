@@ -6264,13 +6264,13 @@ a.hover-text-primary:hover {
     flex: none !important;
   }
 
-  /* 2. Hero Section (Spacious Luxury Mobile Layout) */
+  /* 2. Hero Section (Spacious Luxury Mobile Layout with Ultra-Clear Text) */
   .kaira-bespoke-hero {
-    min-height: 640px !important;
+    min-height: 720px !important;
   }
   .min-vh-hero {
-    min-height: 640px !important;
-    padding: 44px 0 36px !important;
+    min-height: 720px !important;
+    padding: 36px 0 28px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
@@ -6286,51 +6286,83 @@ a.hover-text-primary:hover {
   .kaira-hero-backdrop-overlay {
     background: linear-gradient(
       180deg,
-      rgba(251, 245, 239, 0.92) 0%,
-      rgba(251, 245, 239, 0.72) 36%,
-      rgba(251, 245, 239, 0.2) 62%,
-      rgba(251, 245, 239, 0) 100%
+      rgba(253, 248, 244, 0.97) 0%,
+      rgba(253, 248, 244, 0.92) 48%,
+      rgba(253, 248, 244, 0.35) 64%,
+      rgba(253, 248, 244, 0) 100%
     ) !important;
   }
+  .kaira-hero-eyebrow {
+    font-size: 10.5px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.22em !important;
+    color: #8c6820 !important;
+  }
   .kaira-hero-headline {
-    font-size: 28px !important;
-    line-height: 1.18 !important;
+    font-size: 32px !important;
+    font-weight: 600 !important;
+    line-height: 1.16 !important;
+    color: #120f0e !important;
     margin-bottom: 12px !important;
   }
+  .kaira-hero-headline-italic {
+    color: #63121d !important;
+    font-style: italic !important;
+  }
   .kaira-hero-description {
-    font-size: 13px !important;
-    line-height: 1.55 !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    color: #2b2521 !important;
+    line-height: 1.58 !important;
     margin-bottom: 20px !important;
   }
   .kaira-hero-actions {
-    margin-bottom: 20px !important;
+    margin-bottom: 18px !important;
     display: flex !important;
     justify-content: flex-start !important;
   }
   .kaira-hero-btn-primary {
     width: auto !important;
-    max-width: 240px !important;
+    max-width: 260px !important;
     display: inline-flex !important;
-    padding: 10px 22px !important;
+    padding: 12px 26px !important;
     font-size: 10px !important;
-    letter-spacing: 0.14em !important;
-    border-radius: 2px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.16em !important;
+    border-radius: 3px !important;
+    background-color: #5d0f1a !important;
+    box-shadow: 0 4px 16px rgba(93, 15, 26, 0.35) !important;
   }
   .kaira-hero-trust-row {
-    padding-top: 16px !important;
+    padding-top: 14px !important;
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px 8px !important;
+    gap: 8px !important;
+    border-top: 1px solid rgba(140, 104, 32, 0.16) !important;
   }
   .kaira-trust-item {
-    gap: 6px !important;
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+    border-radius: 6px !important;
+    padding: 7px 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
   }
   .kaira-trust-icon {
-    width: 13px !important;
-    height: 13px !important;
+    width: 14px !important;
+    height: 14px !important;
+    color: #7c1d24 !important;
+    flex-shrink: 0 !important;
   }
   .kaira-trust-label {
-    font-size: 8.5px !important;
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    color: #1a1614 !important;
+    letter-spacing: 0.12em !important;
     line-height: 1.25 !important;
   }
 

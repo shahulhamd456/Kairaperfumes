@@ -167,14 +167,16 @@ async function buildHeroImages() {
   }
 
   // =========================================================================
-  // 2. MOBILE HERO BANNER (900 x 1350 Portrait)
+  // 2. MOBILE HERO BANNER (900 x 1650 Portrait)
+  // Bottles positioned strictly in the bottom portion so the top 62% is 
+  // completely open, crisp, and unobstructed for crystal-clear text readability!
   // =========================================================================
   {
     const width = 900;
-    const height = 1350;
-    const centerH = 480;
-    const sideH = 420;
-    const groundY = 1120; // Bottles sit majestically in lower half
+    const height = 1650;
+    const centerH = 430;
+    const sideH = 375;
+    const groundY = 1480; // Bottles sit in lower portion, baseline y=1480
 
     const amberRaw = await sharp(amberMaster).trim().toBuffer();
     const imperialRaw = await sharp(imperialMaster).trim().toBuffer();
@@ -202,22 +204,22 @@ async function buildHeroImages() {
     const rightLeft = Math.round(rightX - rightMeta.width / 2);
     const rightTop = groundY - rightMeta.height + 15;
 
-    const centerRef = await makeReflection(centerBottle, centerH, 0.32);
-    const leftRef = await makeReflection(leftBottle, sideH, 0.28);
-    const rightRef = await makeReflection(rightBottle, sideH, 0.28);
+    const centerRef = await makeReflection(centerBottle, centerH, 0.30);
+    const leftRef = await makeReflection(leftBottle, sideH, 0.26);
+    const rightRef = await makeReflection(rightBottle, sideH, 0.26);
 
     const mobileSvg = Buffer.from(`
       <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="bgWallM" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#fdf8f4" />
-            <stop offset="40%" stop-color="#f9f1e8" />
-            <stop offset="70%" stop-color="#f2e4d6" />
+            <stop offset="0%" stop-color="#fefaf6" />
+            <stop offset="35%" stop-color="#fdf6ee" />
+            <stop offset="65%" stop-color="#f6ede3" />
             <stop offset="100%" stop-color="#e8d5c4" />
           </linearGradient>
-          <radialGradient id="sunGlowM" cx="50%" cy="25%" r="65%">
-            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
-            <stop offset="50%" stop-color="#fdf4e8" stop-opacity="0.4" />
+          <radialGradient id="sunGlowM" cx="50%" cy="20%" r="65%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+            <stop offset="50%" stop-color="#fdf5eb" stop-opacity="0.5" />
             <stop offset="100%" stop-color="#ebd8c7" stop-opacity="0" />
           </radialGradient>
           <linearGradient id="marbleTopM" x1="0" y1="0" x2="0" y2="1">
@@ -247,19 +249,19 @@ async function buildHeroImages() {
         </defs>
 
         <rect width="${width}" height="${height}" fill="url(#bgWallM)" />
-        <circle cx="450" cy="350" r="380" fill="#ffffff" filter="url(#ultraBlurM)" opacity="0.75" />
+        <circle cx="450" cy="300" r="420" fill="#ffffff" filter="url(#ultraBlurM)" opacity="0.85" />
         <rect width="${width}" height="${height}" fill="url(#sunGlowM)" />
 
         <!-- Luxury Arch Motif behind bottles -->
-        <path d="M 120,1040 L 120,680 A 330,330 0 0,1 780,680 L 780,1040 Z" fill="#faeee3" opacity="0.45" filter="url(#softGlowM)" />
+        <path d="M 120,1380 L 120,1050 A 330,330 0 0,1 780,1050 L 780,1380 Z" fill="#faeee3" opacity="0.45" filter="url(#softGlowM)" />
 
         <!-- Polished Marble Vanity Table -->
-        <path d="M 0,1045 L ${width},1045 L ${width},${height} L 0,${height} Z" fill="url(#marbleTopM)" />
-        <line x1="0" y1="1045" x2="${width}" y2="1045" stroke="url(#bevelEdgeM)" stroke-width="2.5" />
+        <path d="M 0,1385 L ${width},1385 L ${width},${height} L 0,${height} Z" fill="url(#marbleTopM)" />
+        <line x1="0" y1="1385" x2="${width}" y2="1385" stroke="url(#bevelEdgeM)" stroke-width="2.5" />
 
         <!-- Ambient Back-Glow Behind Bottles -->
-        <ellipse cx="${centerX}" cy="1010" rx="380" ry="160" fill="#fff5ea" filter="url(#softGlowM)" opacity="0.9" />
-        <ellipse cx="${centerX}" cy="1010" rx="240" ry="90" fill="#fde6cf" filter="url(#softGlowM)" opacity="0.55" />
+        <ellipse cx="${centerX}" cy="1350" rx="380" ry="160" fill="#fff5ea" filter="url(#softGlowM)" opacity="0.9" />
+        <ellipse cx="${centerX}" cy="1350" rx="240" ry="90" fill="#fde6cf" filter="url(#softGlowM)" opacity="0.55" />
 
         <!-- Ground Contact Shadows -->
         <ellipse cx="${centerX}" cy="${groundY + 14}" rx="145" ry="24" fill="#382115" filter="url(#contactShadowM)" opacity="0.55" />
@@ -285,12 +287,13 @@ async function buildHeroImages() {
         { input: rightBottle, top: rightTop, left: rightLeft },
         { input: centerBottle, top: centerTop, left: centerLeft }
       ])
-      .jpeg({ quality: 88, mozjpeg: true })
+      .jpeg({ quality: 86, mozjpeg: true })
       .toBuffer();
 
     fs.writeFileSync('src/assets/kaira_hero_mobile.jpg', mobileBuffer);
-    console.log(`✓ Mobile Hero saved: ${(mobileBuffer.length / 1024).toFixed(1)} KB (900 x 1350)`);
+    console.log(`✓ Mobile Hero saved: ${(mobileBuffer.length / 1024).toFixed(1)} KB (900 x 1650)`);
   }
 }
 
 buildHeroImages().catch(console.error);
+
