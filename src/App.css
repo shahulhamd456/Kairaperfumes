@@ -6264,105 +6264,53 @@ a.hover-text-primary:hover {
     flex: none !important;
   }
 
-  /* 2. Hero Section (Spacious Luxury Mobile Layout with Ultra-Clear Text) */
+  /* 2. Hero Section (Old Exact Style with Height Slightly Increased) */
   .kaira-bespoke-hero {
-    min-height: 720px !important;
+    min-height: auto !important;
   }
   .min-vh-hero {
-    min-height: 720px !important;
-    padding: 36px 0 28px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-  }
-  .kaira-hero-stage-backdrop picture {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-  .kaira-hero-backdrop-img {
-    object-position: center bottom !important;
-  }
-  .kaira-hero-backdrop-overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(253, 248, 244, 0.97) 0%,
-      rgba(253, 248, 244, 0.92) 48%,
-      rgba(253, 248, 244, 0.35) 64%,
-      rgba(253, 248, 244, 0) 100%
-    ) !important;
-  }
-  .kaira-hero-eyebrow {
-    font-size: 10.5px !important;
-    font-weight: 800 !important;
-    letter-spacing: 0.22em !important;
-    color: #8c6820 !important;
+    min-height: auto !important;
+    padding: 34px 0 48px !important;
   }
   .kaira-hero-headline {
-    font-size: 32px !important;
-    font-weight: 600 !important;
-    line-height: 1.16 !important;
-    color: #120f0e !important;
+    font-size: 28px !important;
+    line-height: 1.18 !important;
     margin-bottom: 12px !important;
   }
-  .kaira-hero-headline-italic {
-    color: #63121d !important;
-    font-style: italic !important;
-  }
   .kaira-hero-description {
-    font-size: 13.5px !important;
-    font-weight: 500 !important;
-    color: #2b2521 !important;
-    line-height: 1.58 !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
     margin-bottom: 20px !important;
   }
   .kaira-hero-actions {
-    margin-bottom: 18px !important;
+    margin-bottom: 20px !important;
     display: flex !important;
     justify-content: flex-start !important;
   }
   .kaira-hero-btn-primary {
     width: auto !important;
-    max-width: 260px !important;
+    max-width: 240px !important;
     display: inline-flex !important;
-    padding: 12px 26px !important;
+    padding: 10px 22px !important;
     font-size: 10px !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.16em !important;
-    border-radius: 3px !important;
-    background-color: #5d0f1a !important;
-    box-shadow: 0 4px 16px rgba(93, 15, 26, 0.35) !important;
+    letter-spacing: 0.14em !important;
+    border-radius: 2px !important;
   }
   .kaira-hero-trust-row {
-    padding-top: 14px !important;
+    padding-top: 16px !important;
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px !important;
-    border-top: 1px solid rgba(140, 104, 32, 0.16) !important;
+    gap: 10px 8px !important;
   }
   .kaira-trust-item {
-    background: rgba(255, 255, 255, 0.92) !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.95) !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
-    border-radius: 6px !important;
-    padding: 7px 10px !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 7px !important;
+    gap: 6px !important;
   }
   .kaira-trust-icon {
-    width: 14px !important;
-    height: 14px !important;
-    color: #7c1d24 !important;
-    flex-shrink: 0 !important;
+    width: 13px !important;
+    height: 13px !important;
   }
   .kaira-trust-label {
-    font-size: 9px !important;
-    font-weight: 700 !important;
-    color: #1a1614 !important;
-    letter-spacing: 0.12em !important;
+    font-size: 8.5px !important;
     line-height: 1.25 !important;
   }
 
