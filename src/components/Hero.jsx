@@ -1,17 +1,22 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import heroStageImg from '../assets/kaira_bespoke_hero_stage.jpg';
+import heroMobileImg from '../assets/kaira_hero_mobile.jpg';
 
 export default function Hero() {
   return (
     <section className="kaira-bespoke-hero" id="hero" aria-label="KAIRA Haute Parfumerie Hero">
       <div className="kaira-hero-stage-backdrop">
-        <img
-          src={heroStageImg}
-          alt="KAIRA Haute Parfumerie Signature Flacons on Luxury Vanity"
-          className="kaira-hero-backdrop-img"
-          loading="eager"
-        />
+        <picture>
+          <source media="(max-width: 767.98px)" srcSet={heroMobileImg} />
+          <img
+            src={heroStageImg}
+            alt="KAIRA Haute Parfumerie Signature Flacons on Luxury Vanity"
+            className="kaira-hero-backdrop-img"
+            loading="eager"
+            fetchPriority="high"
+          />
+        </picture>
         <div className="kaira-hero-backdrop-overlay" />
       </div>
 
