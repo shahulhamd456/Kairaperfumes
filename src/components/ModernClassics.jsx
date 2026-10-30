@@ -7,8 +7,8 @@ export default function ModernClassics({
   onAddToCart,
   onAddToWishlist,
   wishlist = [],
+  onSeeAll,
 }) {
-  const [showAllMobile, setShowAllMobile] = useState(false);
   const [addedId, setAddedId] = useState(null);
   const [selectedSizes, setSelectedSizes] = useState({
     1: '50ml',
@@ -18,6 +18,10 @@ export default function ModernClassics({
     5: '50ml',
     6: '50ml',
   });
+
+  // Display only 1 row of products on the homepage:
+  // 4 items on desktop (1 row in 4-col grid)
+  const homeProducts = allProducts.slice(0, 4);
 
   const handleSizeChange = (e, productId, size) => {
     e.stopPropagation();
@@ -39,7 +43,7 @@ export default function ModernClassics({
     <section className="kaira-human-classics-section" id="modern-classics">
       <Container fluid className="px-lg-5 px-3">
         {/* Section Header */}
-        <div className="d-flex flex-wrap justify-content-between align-items-end mb-5">
+        <div className="d-flex flex-wrap justify-content-between align-items-end mb-4 mb-lg-5">
           <div>
             <span className="kaira-editorial-label">BESTSELLING PERFUMES</span>
             <h2 className="kaira-editorial-heading">Our Bestselling Perfumes</h2>
@@ -48,33 +52,37 @@ export default function ModernClassics({
             </p>
           </div>
           <div className="mt-3 mt-md-0">
-            <a
-              href="#modern-classics"
-              className="kaira-editorial-link"
-              onClick={() => setShowAllMobile(true)}
+            <button
+              type="button"
+              className="kaira-editorial-link border-0 bg-transparent p-0"
+              onClick={onSeeAll}
+              aria-label="See all products on dedicated page"
             >
-              <span>SEE ALL PERFUMES</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>
-                arrow_forward
-              </span>
-            </a>
+              <span>SEE ALL ({allProducts.length})</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '4px' }}>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
           </div>
         </div>
 
-        {/* 6-Bottle Elegant Showcase (Top 4 on phone, expandable) */}
+        {/* Strictly 1-Row Showcase:
+            - Desktop/Tablet (>= 768px): 4 items in 1 row (4 columns)
+            - Mobile (< 768px): 2 items in 1 row (2 columns), items 3 & 4 hidden on small screens */}
         <div className="kaira-human-grid">
-          {allProducts.map((product, index) => {
+          {homeProducts.map((product, index) => {
             const currentSize = selectedSizes[product.id] || '50ml';
             const currentPrice =
               product.sizes?.[currentSize]?.price || (currentSize === '30ml' ? '₹349' : '₹599');
             const originalPrice = product.sizes?.[currentSize]?.originalPrice;
             const isWishlisted = wishlist.some((w) => w.id === product.id);
-            const isHiddenOnMobile = index >= 4 && !showAllMobile;
+            const isMobileHidden = index >= 2; // Keeps exactly 1 row on mobile (2 columns)
 
             return (
               <div
                 key={product.id}
-                className={`kaira-human-card ${isHiddenOnMobile ? 'kaira-card-mobile-hidden' : ''}`}
+                className={`kaira-human-card ${isMobileHidden ? 'd-none d-md-flex' : ''}`}
                 onClick={() => onProductSelect(product)}
               >
                 {/* Visual Stage */}
@@ -194,35 +202,20 @@ export default function ModernClassics({
           })}
         </div>
 
-        {/* Mobile See More / View All Toggle (Shows Remaining Creations) */}
-        <div className="d-md-none text-center mt-3 pt-2">
-          {!showAllMobile ? (
-            <button
-              type="button"
-              className="kaira-see-more-btn"
-              onClick={() => setShowAllMobile(true)}
-            >
-              <span>SEE MORE PERFUMES ({allProducts.length - 4} MORE)</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>
-                expand_more
-              </span>
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="kaira-see-more-btn"
-              onClick={() => {
-                setShowAllMobile(false);
-                const elem = document.getElementById('modern-classics');
-                if (elem) elem.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              <span>SHOW LESS</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>
-                expand_less
-              </span>
-            </button>
-          )}
+        {/* See All Products Redirect CTA Button */}
+        <div className="text-center mt-4 pt-2">
+          <button
+            type="button"
+            className="kaira-ref-cta-btn d-inline-flex align-items-center gap-2"
+            onClick={onSeeAll}
+            aria-label="View all products on dedicated page"
+          >
+            <span>See All Products ({allProducts.length})</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
         </div>
       </Container>
     </section>

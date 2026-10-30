@@ -7,6 +7,7 @@ export default function Header({
   wishlistCount = 0,
   onWishlistOpen,
   onNavigateHome,
+  onNavigateProducts,
   searchQuery = '',
   onSearchChange,
   onSearchResultSelect,
@@ -34,6 +35,16 @@ export default function Header({
         if (elem) elem.scrollIntoView({ behavior: 'smooth' });
       }
     }, 60);
+  };
+
+  const handleShopClick = (e) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    if (onNavigateProducts) {
+      onNavigateProducts();
+    } else {
+      handleNavClick(e, '#modern-classics');
+    }
   };
 
   return (
@@ -68,9 +79,9 @@ export default function Header({
             {/* Left Navigation */}
             <div className="kaira-nav-left d-none d-lg-flex align-items-center gap-4">
               <a
-                href="#modern-classics"
+                href="#all-products"
                 className="nav-item-link"
-                onClick={(e) => handleNavClick(e, '#modern-classics')}
+                onClick={handleShopClick}
               >
                 SHOP <span className="material-symbols-outlined dropdown-arrow">expand_more</span>
               </a>
@@ -224,7 +235,7 @@ export default function Header({
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="kaira-mobile-nav-drawer">
-          <a href="#modern-classics" onClick={(e) => handleNavClick(e, '#modern-classics')}>SHOP</a>
+          <a href="#all-products" onClick={handleShopClick}>ALL PRODUCTS</a>
           <a href="#explore-collections" onClick={(e) => handleNavClick(e, '#explore-collections')}>COLLECTIONS</a>
           <a href="#modern-classics" onClick={(e) => handleNavClick(e, '#modern-classics')}>BESTSELLERS</a>
           <a href="#nature-remembers" onClick={(e) => handleNavClick(e, '#nature-remembers')}>ABOUT</a>

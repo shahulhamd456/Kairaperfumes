@@ -11,6 +11,7 @@ import FounderStory from './components/FounderStory';
 import PinpointMap from './components/PinpointMap';
 import JoinJourney from './components/JoinJourney';
 import ProductDetail from './components/ProductDetail';
+import ProductsPage from './components/ProductsPage';
 import CartDrawer from './components/CartDrawer';
 import WishlistDrawer from './components/WishlistDrawer';
 import Footer from './components/Footer';
@@ -19,7 +20,8 @@ import { allProducts } from './data/products';
 function App() {
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
-  const [currentView, setCurrentView] = useState('home'); // 'home' | 'detail'
+  const [currentView, setCurrentView] = useState('home'); // 'home' | 'products' | 'detail'
+  const [previousView, setPreviousView] = useState('home');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [cartOpen, setCartOpen] = useState(false);
   const [wishlistOpen, setWishlistOpen] = useState(false);
@@ -112,13 +114,32 @@ function App() {
   // Open details page for chosen fragrance
   const handleProductSelect = (product) => {
     setSelectedProduct(product);
+    setPreviousView(currentView);
     setCurrentView('detail');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Return back to main catalog
+  // Return back to main catalog / homepage
   const handleBackToCatalog = () => {
     setCurrentView('home');
+    setSelectedProduct(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Navigate to dedicated Products page
+  const handleNavigateToProducts = () => {
+    setCurrentView('products');
+    setSelectedProduct(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Back from product detail
+  const handleBackFromDetail = () => {
+    if (previousView === 'products') {
+      setCurrentView('products');
+    } else {
+      setCurrentView('home');
+    }
     setSelectedProduct(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -143,6 +164,7 @@ function App() {
         wishlistCount={wishlist.length}
         onWishlistOpen={() => setWishlistOpen(true)}
         onNavigateHome={handleBackToCatalog}
+        onNavigateProducts={handleNavigateToProducts}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         searchResults={searchResults}
@@ -160,41 +182,54 @@ function App() {
       )}
 
       <main>
-        {currentView === 'home' ? (
+        {currentView === 'home' && (
           <>
             {/* 1. Hero */}
             <Hero />
 
             {/* 2. Find Your Signature Scent (For Her, For Him, Unisex, Discovery Sets with KAIRA bottles) */}
-            <SignatureCollections onSelectCategory={handleBackToCatalog} />
+            <SignatureCollections onSelectCategory={handleNavigateToProducts} />
 
             {/* 3. Scent Families */}
             <ScentFamilies onSelectCategory={handleBackToCatalog} />
 
-            {/* 3. VELORA Modern Classics (The 4 Flacons) */}
+            {/* 4. Single-Row Bestselling Perfumes (Teaser with See All link) */}
             <ModernClassics
               onProductSelect={handleProductSelect}
               onAddToCart={handleAddToCart}
               onAddToWishlist={handleAddToWishlist}
               wishlist={wishlist}
+              onSeeAll={handleNavigateToProducts}
             />
 
-            {/* 4. VELORA Nature Remembers (The Notes Breakdown) */}
+            {/* 5. Notes Breakdown */}
             <NatureRemembers onProductSelect={handleProductSelect} />
 
-            {/* 5. VELORA Stories in Scent (The Journal) */}
+            {/* 6. Stories in Scent */}
             <StoriesInScent />
 
-            {/* 6. Meet the Founder - Sirajudheen */}
+            {/* 7. Meet the Founder - Sirajudheen */}
             <FounderStory />
 
-            {/* 7. Flagship Boutique Pinpoint Map */}
+            {/* 8. Flagship Boutique Pinpoint Map */}
             <PinpointMap />
           </>
-        ) : (
+        )}
+
+        {currentView === 'products' && (
+          <ProductsPage
+            onProductSelect={handleProductSelect}
+            onAddToCart={handleAddToCart}
+            onAddToWishlist={handleAddToWishlist}
+            wishlist={wishlist}
+            onBackToHome={handleBackToCatalog}
+          />
+        )}
+
+        {currentView === 'detail' && (
           <ProductDetail
             product={selectedProduct}
-            onBack={handleBackToCatalog}
+            onBack={handleBackFromDetail}
             onAddToCart={handleAddToCart}
             onAddToWishlist={handleAddToWishlist}
             wishlist={wishlist}

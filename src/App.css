@@ -6691,6 +6691,7 @@ a.hover-text-primary:hover {
 .kaira-founder-ref-section > .container-fluid,
 .kaira-pinpoint-section > .container-fluid,
 .kaira-standard-footer > .container-fluid,
+.kaira-products-page > .container-fluid,
 .product-detail-view .container,
 .product-detail-view .container-fluid,
 main > .container-fluid {
@@ -6715,12 +6716,126 @@ main > .container-fluid {
   .kaira-founder-ref-section > .container-fluid,
   .kaira-pinpoint-section > .container-fluid,
   .kaira-standard-footer > .container-fluid,
+  .kaira-products-page > .container-fluid,
   .product-detail-view .container,
   .product-detail-view .container-fluid,
   main > .container-fluid {
     padding-left: 16px !important;
     padding-right: 16px !important;
   }
+}
+
+/* =========================================================================
+   DEDICATED PRODUCTS PAGE VIEW
+   ========================================================================= */
+.kaira-products-page {
+  background-color: #faf8f5;
+  min-height: 80vh;
+}
+
+.kaira-page-breadcrumbs .breadcrumb {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font-family: var(--velora-sans);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.breadcrumb-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #78726a;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-link-btn:hover {
+  color: #181716;
+  text-decoration: underline;
+}
+
+.kaira-page-breadcrumbs .breadcrumb-item.active {
+  color: #181716;
+  font-weight: 600;
+}
+
+.kaira-back-home-btn {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #181716;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+}
+
+.kaira-back-home-btn:hover {
+  background: #181716;
+  color: #ffffff;
+  border-color: #181716;
+}
+
+.kaira-products-filter-track-wrap {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px 0 10px;
+}
+
+.kaira-products-filter-track-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.kaira-products-filter-track {
+  display: inline-flex;
+  min-width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 16px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 991.98px) {
+  .kaira-products-filter-track {
+    justify-content: flex-start;
+  }
+}
+
+.kaira-catalog-count-text {
+  font-family: var(--velora-sans);
+  font-size: 12px;
+  color: #78726a;
+  letter-spacing: 0.02em;
+}
+
+.kaira-clear-filter-btn {
+  background: none;
+  border: none;
+  font-family: var(--velora-sans);
+  font-size: 11px;
+  font-weight: 600;
+  color: #7c1d24;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: opacity 0.2s ease;
+}
+
+.kaira-clear-filter-btn:hover {
+  opacity: 0.7;
 }
 
 
