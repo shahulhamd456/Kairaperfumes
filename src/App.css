@@ -3423,6 +3423,22 @@ a.hover-text-primary:hover {
   color: #ffffff;
 }
 
+.add-bag-btn.added {
+  background-color: #15803d !important;
+  border-color: #15803d !important;
+  color: #ffffff !important;
+}
+
+.add-bag-btn svg {
+  flex-shrink: 0;
+  stroke: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.add-bag-btn:hover svg {
+  transform: scale(1.08);
+}
+
 /* ==========================================================================
    THE OLFACTORY PYRAMID / NATURE REMEMBERS (Mobile-First Luxury Architecture)
    ========================================================================== */

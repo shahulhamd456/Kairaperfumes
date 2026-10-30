@@ -138,7 +138,7 @@ Please confirm my order and share payment instructions. Thank you!`;
           <>
             <div className="cart-drawer-header">
               <h3 className="label-caps mb-0" style={{ color: 'var(--on-surface)' }}>
-                Shopping Bag ({cartItems.reduce((acc, it) => acc + it.quantity, 0)})
+                Shopping Cart ({cartItems.reduce((acc, it) => acc + it.quantity, 0)})
               </h3>
               <button
                 type="button"
@@ -154,11 +154,24 @@ Please confirm my order and share payment instructions. Thank you!`;
             <div className="cart-drawer-body">
               {cartItems.length === 0 ? (
                 <div className="d-flex flex-column align-items-center justify-content-center h-100 text-muted p-4">
-                  <span className="material-symbols-outlined mb-3" style={{ fontSize: '42px', opacity: 0.5 }}>
-                    shopping_bag
-                  </span>
+                  <svg
+                    width="44"
+                    height="44"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mb-3"
+                    style={{ opacity: 0.5 }}
+                  >
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                  </svg>
                   <p className="body-md mb-2 text-center text-dark fw-medium">
-                    Your shopping bag is empty.
+                    Your shopping cart is empty.
                   </p>
                   <p className="small text-muted text-center">
                     Discover our signature extraits starting from ₹349 for 30ml and ₹599 for 50ml.

@@ -103,7 +103,7 @@ export default function WishlistDrawer({
                           onRemoveFromWishlist(item);
                         }}
                       >
-                        Add to Bag
+                        Add to Cart
                       </button>
 
                       <button
@@ -144,7 +144,7 @@ export default function WishlistDrawer({
                 onClose();
               }}
             >
-              Move All to Bag
+              Move All to Cart
             </button>
           </div>
         )}

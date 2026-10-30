@@ -112,26 +112,38 @@ export default function ProductCard({
           </button>
         </div>
 
-        {/* Add to Bag Button (Single line, no duplicated price) */}
+        {/* Add to Cart Button */}
         <button
           type="button"
           className={`luxury-add-cart-btn ${justAdded ? 'added' : ''}`}
           onClick={handleAddToCartClick}
-          aria-label={`Add ${product.title} to bag`}
+          aria-label={`Add ${product.title} to cart`}
         >
           {justAdded ? (
             <>
-              <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>
-                check
-              </span>
-              <span>ADDED TO BAG</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>ADDED TO CART</span>
             </>
           ) : (
             <>
-              <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>
-                shopping_bag
-              </span>
-              <span>ADD TO BAG</span>
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ flexShrink: 0 }}
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              </svg>
+              <span>ADD TO CART</span>
             </>
           )}
         </button>

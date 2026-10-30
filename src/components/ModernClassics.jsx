@@ -9,6 +9,7 @@ export default function ModernClassics({
   wishlist = [],
 }) {
   const [showAllMobile, setShowAllMobile] = useState(false);
+  const [addedId, setAddedId] = useState(null);
   const [selectedSizes, setSelectedSizes] = useState({
     1: '50ml',
     2: '50ml',
@@ -28,6 +29,10 @@ export default function ModernClassics({
     const size = selectedSizes[product.id] || '50ml';
     const price = product.sizes?.[size]?.price || (size === '30ml' ? '₹349' : '₹599');
     onAddToCart(product, 1, size, price);
+    setAddedId(product.id);
+    setTimeout(() => {
+      setAddedId((curr) => (curr === product.id ? null : curr));
+    }, 1500);
   };
 
   return (
@@ -138,16 +143,50 @@ export default function ModernClassics({
                     </button>
                   </div>
 
-                  {/* Minimal Luxury Add to Bag */}
+                  {/* Add to Cart */}
                   <button
                     type="button"
-                    className="add-bag-btn"
+                    className={`add-bag-btn ${addedId === product.id ? 'added' : ''}`}
                     onClick={(e) => handleQuickAdd(e, product)}
+                    aria-label={`Add ${product.title} to cart`}
                   >
-                    <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>
-                      shopping_bag
-                    </span>
-                    <span>ADD TO BAG</span>
+                    {addedId === product.id ? (
+                      <>
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          style={{ flexShrink: 0 }}
+                        >
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        <span>ADDED TO CART</span>
+                      </>
+                    ) : (
+                      <>
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          style={{ flexShrink: 0 }}
+                        >
+                          <circle cx="9" cy="21" r="1" />
+                          <circle cx="20" cy="21" r="1" />
+                          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                        </svg>
+                        <span>ADD TO CART</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </div>
